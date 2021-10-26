@@ -1,9 +1,11 @@
+import Main from "./main/Main";
+
 const App = () => {
   return (
     <>
-      <h1>Hello!</h1>
+      <Main />
     </>
   );
-}
+};
 
 export default App;
