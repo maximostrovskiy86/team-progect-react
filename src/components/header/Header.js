@@ -1,14 +1,15 @@
 import { useSelector } from "react-redux";
-import { authSelectors } from "../../redux/authorization";
-import AuthNavigation from "../authNavigation/AuthNavigation";
+import { authSelectors } from "../../redux/auth";
+import AuthNavigation from "../authNav/AuthNavigation";
 import Navigation from "../navigation/Navigation";
-import style from "./Header.module.scss";
+import Menu from "../menu/Menu";
+import style from "./Header.module.css";
 
 export default function Header() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <header className={style.headerWrapper}>
-      <Navigation /> {isLoggedIn && <AuthNavigation />}
+      <Navigation /> {isLoggedIn ? <Menu /> : <AuthNavigation />}
     </header>
   );
 }
