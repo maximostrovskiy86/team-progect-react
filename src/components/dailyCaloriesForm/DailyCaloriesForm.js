@@ -13,7 +13,7 @@ const DailyCaloriesForm = ({toggle, setValue}) => {
       age: "",
       weight: "",
       desiredWeight: "",
-      bloodType: 3,
+      bloodType: 4,
     },
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));
