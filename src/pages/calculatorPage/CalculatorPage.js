@@ -1,7 +1,9 @@
+import DailyCaloriesForm from "../../components/dailyCaloriesForm/DailyCaloriesForm";
+
 export default function CalculatorPage() {
   return (
     <>
-      <h2> CalculatorPage</h2>
+      <DailyCaloriesForm />
     </>
   );
 }
