@@ -3,9 +3,9 @@ import style from "./AuthNavigation.module.scss";
 
 const AuthNavigation = () => {
   return (
-    <>
+    <div className={style.AuthNavigationBox}>
       <NavLink
-        className={style.nav}
+        className={style.authNav}
         activeClassName={style.activeNav}
         to="/login"
         exact
@@ -13,14 +13,14 @@ const AuthNavigation = () => {
         Вход
       </NavLink>
       <NavLink
-        className={style.nav}
+        className={style.authNav}
         activeClassName={style.activeNav}
         to="/register"
         exact
       >
         Регистрация
       </NavLink>
-    </>
+    </div>
   );
 };
 

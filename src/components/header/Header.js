@@ -11,7 +11,6 @@ export default function Header() {
   return (
     <header className={style.headerWrapper}>
       <div className={style.headerContainer}>
-        <Logo />
         <Navigation /> {isLoggedIn ? <Menu /> : <AuthNavigation />}
       </div>
     </header>
