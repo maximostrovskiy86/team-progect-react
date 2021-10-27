@@ -4,7 +4,7 @@ import styles from "./DailyCaloriesForm.module.scss";
 
 import axios from "axios";
 
-const DailyCaloriesForm = () => {
+const DailyCaloriesForm = ({toggle, setValue}) => {
   // const { values, submitForm } = useFormikContext();
 
   const formik = useFormik({
@@ -17,14 +17,14 @@ const DailyCaloriesForm = () => {
     },
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));
-      export const fetchDailyRate = () => {
         axios
           .post("https://slimmom-backend.goit.global/daily-rate", values)
           .then((response) => {
             console.log(response.data);
-            return response.data;
+            toggle();
+            setValue(response.data.notAllowedProducts)
           });
-      };
+      // };
     },
   });
 
