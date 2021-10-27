@@ -38,7 +38,7 @@ export default function App() {
   const isRefreshingUser = useSelector(authSelectors.getIsRefreshingUser);
 
   useEffect(() => {
-    dispatch(authOperations.refreshCurrentUser());
+    // dispatch(authOperations.refreshUser());
   }, [dispatch]);
 
   return (

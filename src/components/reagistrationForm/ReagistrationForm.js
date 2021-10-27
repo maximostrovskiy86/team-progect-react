@@ -28,6 +28,7 @@ export default function RegistrationForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(authOperations.register({ username, email, password }));
+    // dispatch(authOperations.logIn({ email, password }));
     resetForm();
   };
 
