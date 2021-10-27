@@ -1,7 +1,10 @@
+import style from "./MainPage.module.css";
 export default function MainPage() {
   return (
     <>
-      <h2> MainPage</h2>
+      <main className={style.main}>
+        <h2>Helllllllllllllllllllllll</h2>
+      </main>
     </>
   );
 }

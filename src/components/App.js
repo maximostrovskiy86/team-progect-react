@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authSelectors, authOperations } from "../redux/authorization";
 import PublicRoute from "../routes/PublicRoute";
 import PrivateRoute from "../routes/PrivateRoute";
-import { Switch } from "react-router";
+import { Redirect, Switch } from "react-router";
 import Header from "./header/Header";
 // import Loader from "react-loader-spinner";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
@@ -80,6 +80,7 @@ export default function App() {
             <PrivateRoute path="/calculator" restricted redirectTo="/login">
               <CalculatorPage />
             </PrivateRoute>
+            <Redirect to="/" />
           </Suspense>
         </Switch>
       </>
