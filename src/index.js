@@ -8,14 +8,14 @@ import { store, persistor } from "./redux/store";
 import App from "./components/App";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={<h2>...loading</h2>} persistor={persistor}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+    <React.StrictMode>
+        <Provider store={store}>
+            <PersistGate loading={<h2>...loading</h2>} persistor={persistor}>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </PersistGate>
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById("root")
 );
