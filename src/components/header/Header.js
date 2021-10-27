@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { authSelectors } from "../../redux/auth";
-import AuthNavigation from "../authNav/AuthNavigation";
+import AuthNavigation from "../authNavigation/AuthNavigation";
 import Navigation from "../navigation/Navigation";
 import Menu from "../menu/Menu";
 import style from "./Header.module.css";
