@@ -21,7 +21,15 @@ const authSlice = createSlice({
       state.error = null;
     },
     [authOperations.register.fulfilled](state, action) {
-      state.user = action.payload;
+      state.user.username = action.payload.user.username;
+      state.user.email = action.payload.user.email;
+      state.user.id = action.payload.user.id;
+      state.accessToken = action.payload.accessToken;
+      state.refreshToken = action.payload.refreshToken;
+      state.sid = action.payload.sid;
+      state.todaySummary = action.payload.todaySummary;
+      state.userData = action.payload.user.userData;
+      state.isLoggedIn = true;
     },
     [authOperations.register.rejected](state, action) {
       state.error = action.payload;
