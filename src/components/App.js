@@ -5,9 +5,9 @@ import Container from "./container/Container";
 const App = () => {
     return (
         <>
-            <MainPage/>
-            <Container>
 
+            <Container>
+                <MainPage/>
             </Container>
         </>
     );
