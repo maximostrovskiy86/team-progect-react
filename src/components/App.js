@@ -1,12 +1,12 @@
 import { lazy, Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { authSelectors, authOperations } from "../redux/auth";
+import { authSelectors, authOperations } from "../redux/authorization";
 import PublicRoute from "../routes/PublicRoute";
 import PrivateRoute from "../routes/PrivateRoute";
 import { Switch } from "react-router";
 import Header from "./header/Header";
-import Loader from "react-loader-spinner";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+// import Loader from "react-loader-spinner";
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const MainPage = lazy(
   () =>
@@ -49,14 +49,15 @@ export default function App() {
           <Suspense
             fallback={
               <div>
-                <Loader
+                loader
+                {/* <Loader
                   className="Loader"
                   type="ThreeDots"
                   color="#00BFFF"
                   height={20}
                   width={100}
                   timeout={3000}
-                />
+                /> */}
               </div>
             }
           >

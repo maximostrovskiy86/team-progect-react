@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { authOperations } from "../../redux/authorization/index";
+import { authOperations } from "../../redux/authorization";
 
-export default function RegistrationForm() {
-  const [username, setUsername] = useState("");
+export default function LoginForm() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
-      case "username":
-        return setUsername(value);
       case "email":
         return setEmail(value);
       case "password":
@@ -21,30 +18,20 @@ export default function RegistrationForm() {
     }
   };
   const resetForm = () => {
-    setUsername("");
     setEmail("");
     setPassword("");
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(authOperations.register({ username, email, password }));
+    dispatch(authOperations.logIn({ email, password }));
     resetForm();
   };
 
   return (
     <div>
-      <h2>Registration form</h2>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <label>
-          Name
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={handleChange}
-          />
-        </label>
+      <h2>Login form</h2>
 
+      <form onSubmit={handleSubmit} autoComplete="off">
         <label>
           Email
           <input
@@ -65,7 +52,7 @@ export default function RegistrationForm() {
           />
         </label>
 
-        <button type="submit">Sign up</button>
+        <button type="submit">Log in</button>
       </form>
     </div>
   );
