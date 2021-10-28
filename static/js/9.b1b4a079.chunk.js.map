@@ -1,1 +1,0 @@
-{"version":3,"sources":["pages/diaryPage/DiaryPage.js"],"names":["DiaryPage"],"mappings":"yLAAe,SAASA,IACtB,OACE,mCACE","file":"static/js/9.b1b4a079.chunk.js","sourcesContent":["export default function DiaryPage() {\n  return (\n    <>\n      <h2> DiaryPage</h2>\n    </>\n  );\n}\n"],"sourceRoot":""}

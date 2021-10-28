@@ -1,2 +1,0 @@
-(this["webpackJsonpteam-progect-react"]=this["webpackJsonpteam-progect-react"]||[]).push([[9],{95:function(t,e,r){"use strict";r.r(e),r.d(e,"default",(function(){return n}));var c=r(1);function n(){return Object(c.jsx)(c.Fragment,{children:Object(c.jsx)("h2",{children:" DiaryPage"})})}}}]);
-//# sourceMappingURL=9.b1b4a079.chunk.js.map
