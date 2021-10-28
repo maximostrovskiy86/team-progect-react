@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import styles from "./DailyCaloriesForm.module.scss";
-
 import axios from "axios";
+// import { Modal } from "bootstrap";
 
-const DailyCaloriesForm = ({toggle, setValue}) => {
+const DailyCaloriesForm = ({ toggle, setValue }) => {
   // const { values, submitForm } = useFormikContext();
 
   const formik = useFormik({
@@ -17,65 +17,66 @@ const DailyCaloriesForm = ({toggle, setValue}) => {
     },
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));
-        axios
-          .post("https://slimmom-backend.goit.global/daily-rate", values)
-          .then((response) => {
-            console.log(response.data);
-            toggle();
-            setValue(response.data.notAllowedProducts)
-          });
+      axios
+        .post("https://slimmom-backend.goit.global/daily-rate", values)
+        .then((response) => {
+          console.log(response.data);
+          toggle();
+          setValue(response.data.notAllowedProducts);
+        });
       // };
     },
   });
 
   const showModal = () => {};
-
   return (
-    <form className={styles.formContainer} onSubmit={formik.handleSubmit}>
-      <label htmlFor="height">Рост*</label>
-      <input
-        id="height"
-        name="height"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.height}
-        className={styles.field}
-      />
-      <label htmlFor="age">Возраст*</label>
-      <input
-        id="age"
-        name="age"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.age}
-        className={styles.field}
-      />
-      <label htmlFor="weight">Текущий вес*</label>
-      <input
-        id="weight"
-        name="weight"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.weight}
-        className={styles.field}
-      />
-      <label htmlFor="desiredWeight">Желаемый вес*</label>
-      <input
-        id="desiredWeight"
-        name="desiredWeight"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.desiredWeight}
-        className={styles.field}
-      />
-      <div id="my-radio-group" className={styles.formInput}>
-        Группа крови*
-      </div>
+    <>
+      <form className={styles.formContainer} onSubmit={formik.handleSubmit}>
+        <label htmlFor="height">Рост*</label>
+        <input
+          id="height"
+          name="height"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.height}
+          className={styles.field}
+        />
+        <label htmlFor="age">Возраст*</label>
+        <input
+          id="age"
+          name="age"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.age}
+          className={styles.field}
+        />
+        <label htmlFor="weight">Текущий вес*</label>
+        <input
+          id="weight"
+          name="weight"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.weight}
+          className={styles.field}
+        />
+        <label htmlFor="desiredWeight">Желаемый вес*</label>
+        <input
+          id="desiredWeight"
+          name="desiredWeight"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.desiredWeight}
+          className={styles.field}
+        />
+        <div id="my-radio-group" className={styles.formInput}>
+          Группа крови*
+        </div>
 
-      <button type="submit" onClick={showModal} className={styles.button}>
-        Похудеть
-      </button>
-    </form>
+        <button type="submit" onClick={showModal} className={styles.button}>
+          Похудеть
+        </button>
+      </form>
+    </>
   );
 };
 export default DailyCaloriesForm;
