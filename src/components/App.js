@@ -1,9 +1,9 @@
-import { lazy, Suspense, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { authSelectors, authOperations } from "../redux/authorization";
+import {lazy, Suspense, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {authSelectors, authOperations} from "../redux/authorization";
 import PublicRoute from "../routes/PublicRoute";
 import PrivateRoute from "../routes/PrivateRoute";
-import { Redirect, Switch } from "react-router";
+import {Redirect, Switch} from "react-router";
 import Header from "./header/Header";
 // import Loader from "react-loader-spinner";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
@@ -37,14 +37,16 @@ export default function App() {
     const dispatch = useDispatch();
     const isRefreshingUser = useSelector(authSelectors.getIsRefreshingUser);
 
+
     useEffect(() => {
-        dispatch(authOperations.refreshCurrentUser());
+        // dispatch(authOperations.refreshCurrentUser());
     }, [dispatch]);
+
 
     return (
         !isRefreshingUser && (
             <>
-                <Header />
+                <Header/>
                 <Switch>
                     <Suspense
                         fallback={
@@ -62,25 +64,25 @@ export default function App() {
                         }
                     >
                         <PublicRoute exact path="/">
-                            <MainPage />
+                            <MainPage/>
                         </PublicRoute>
 
                         <PublicRoute path="/register" restricted>
-                            <RegistrationPage />
+                            <RegistrationPage/>
                         </PublicRoute>
 
                         <PublicRoute path="/login" restricted redirectTo="/diary">
-                            <LoginPage />
+                            <LoginPage/>
                         </PublicRoute>
 
                         <PrivateRoute path="/diary" restricted redirectTo="/login">
-                            <DiaryPage />
+                            <DiaryPage/>
                         </PrivateRoute>
 
                         <PrivateRoute path="/calculator" restricted redirectTo="/login">
-                            <CalculatorPage />
+                            <CalculatorPage/>
                         </PrivateRoute>
-                        <Redirect to="/" />
+                        <Redirect to="/"/>
                     </Suspense>
                 </Switch>
             </>

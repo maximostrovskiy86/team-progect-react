@@ -3,8 +3,12 @@ import authOperations from "./operations";
 
 const initialState = {
   user: { username: null, email: null, id: null },
-  token: null,
+  accessToken: null,
+  refreshToken: null,
+  sid: null,
   isLoggedIn: false,
+  todaySummary: null,
+  userData: null,
   isRefreshingUser: false,
   error: null,
 };
@@ -17,10 +21,15 @@ const authSlice = createSlice({
       state.error = null;
     },
     [authOperations.register.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.user.username = action.payload.user.username;
+      state.user.email = action.payload.user.email;
+      state.user.id = action.payload.user.id;
+      state.accessToken = action.payload.accessToken;
+      state.refreshToken = action.payload.refreshToken;
+      state.sid = action.payload.sid;
+      state.todaySummary = action.payload.todaySummary;
+      state.userData = action.payload.user.userData;
       state.isLoggedIn = true;
-      // state.error = null;
     },
     [authOperations.register.rejected](state, action) {
       state.error = action.payload;
@@ -29,10 +38,15 @@ const authSlice = createSlice({
       state.error = null;
     },
     [authOperations.logIn.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.user.username = action.payload.user.username;
+      state.user.email = action.payload.user.email;
+      state.user.id = action.payload.user.id;
+      state.accessToken = action.payload.accessToken;
+      state.refreshToken = action.payload.refreshToken;
+      state.sid = action.payload.sid;
+      state.todaySummary = action.payload.todaySummary;
+      state.userData = action.payload.user.userData;
       state.isLoggedIn = true;
-      // state.error = null;
     },
     [authOperations.logIn.rejected](state, action) {
       state.error = action.payload;
@@ -41,24 +55,41 @@ const authSlice = createSlice({
       state.error = null;
     },
     [authOperations.logOut.fulfilled](state) {
-      state.user = { username: null, email: null };
-      state.token = null;
+      // state = initialState;
+      state.user.username = null;
+      state.user.email = null;
+      state.user.id = null;
+      state.accessToken = null;
+      state.refreshToken = null;
+      state.sid = null;
+      state.todaySummary = null;
+      state.userData = null;
       state.isLoggedIn = false;
-      state.isRefreshingUser = false;
-      // state.error = null;
     },
     [authOperations.logOut.rejected](state, action) {
+      // state = initialState;
+      state.user.username = null;
+      state.user.email = null;
+      state.user.id = null;
+      state.accessToken = null;
+      state.refreshToken = null;
+      state.sid = null;
+      state.todaySummary = null;
+      state.userData = null;
+      state.isLoggedIn = false;
       state.error = action.payload;
     },
-    [authOperations.refreshCurrentUser.pending](state) {
+    [authOperations.refreshUser.pending](state) {
       state.isRefreshingUser = true;
     },
-    [authOperations.refreshCurrentUser.fulfilled](state, action) {
-      state.user = action.payload;
+    [authOperations.refreshUser.fulfilled](state, action) {
+      state.accessToken = action.payload.accessToken;
+      state.refreshToken = action.payload.refreshToken;
+      state.sid = action.payload.sid;
       state.isLoggedIn = true;
       state.isRefreshingUser = false;
     },
-    [authOperations.refreshCurrentUser.rejected](state) {
+    [authOperations.refreshUser.rejected](state) {
       state.isRefreshingUser = false;
     },
   },
