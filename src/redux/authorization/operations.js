@@ -58,18 +58,19 @@ const logOut = createAsyncThunk(
   }
 );
 
-const refreshUser = createAsyncThunk(
+const refreshAccessToken = createAsyncThunk(
   "auth/refresh",
   async (_, { rejectWithValue, getState }) => {
     const state = getState();
-    const persistedToken = state.auth.accessToken;
+    const refreshToken = state.auth.refreshToken;
+    const sid = state.auth.sid;
 
-    if (persistedToken === null) {
+    if (refreshToken === null) {
       return rejectWithValue();
     }
-    token.set(persistedToken);
+    token.set(refreshToken);
     try {
-      const { data } = await axios.post("/auth/refresh");
+      const { data } = await axios.post("/auth/refresh", { sid });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -81,6 +82,6 @@ const operations = {
   register,
   logOut,
   logIn,
-  refreshUser,
+  refreshAccessToken,
 };
 export default operations;
