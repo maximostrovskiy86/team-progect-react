@@ -1,5 +1,5 @@
 import React from "react";
-import logoFull from "../../images/logoJPG.jpg";
+// import logoFull from "../../images/logoJPG.jpg";
 import logo from "../../images/logo-mob-JPG.jpg";
 const Logo = () => {
   return (

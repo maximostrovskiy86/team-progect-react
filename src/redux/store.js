@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
-  persistReducer,
+  //   persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -10,9 +10,9 @@ import {
   REGISTER,
 } from "redux-persist";
 // import logger from "redux-logger";
-import storage from "redux-persist/lib/storage";
+// import storage from "redux-persist/lib/storage";
 // import { contactsReducer } from "./phonebook";
-import { authReducer } from "./authorization";
+// import { authReducer } from "./authorization";
 import {
   persistedAuthReducer,
   persistedUserReducer,
@@ -25,16 +25,6 @@ const middleware = (getDefaultMiddleware) =>
     },
   });
 // .concat(logger);
-
-// const authPersistConfig = {
-//   key: "auth",
-//   storage,
-// };
-
-// const userPersistConfig = {
-//   key: "user",
-//   storage,
-// };
 
 const store = configureStore({
   reducer: {
