@@ -1,0 +1,30 @@
+.AuthNavigationBox {
+  margin-left: auto;
+  @media screen and (min-width: 1280px) {
+    margin: 0;
+    padding-left: 20px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-left: 2px solid #e0e0e0;
+    margin-left: 20px;
+  }
+}
+
+.authNav {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: #9b9faa;
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+.activeNav {
+  color: #212121;
+}
