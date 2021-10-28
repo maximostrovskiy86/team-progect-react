@@ -79,10 +79,13 @@ const refreshAccessToken = createAsyncThunk(
 );
 
 const refreshUserData = createAsyncThunk(
-  "/user",
-  async (_, { rejectWithValue }) => {
+  "/user/refresh",
+  async (_, { rejectWithValue, getState }) => {
+    const state = getState();
+    const accessToken = state.auth.accessToken;
+    token.set(accessToken);
     try {
-      const { data } = await axios.post("/user");
+      const { data } = await axios.get("/user");
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

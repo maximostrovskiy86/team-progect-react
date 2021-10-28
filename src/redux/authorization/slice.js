@@ -25,54 +25,82 @@ const initialState = {
 };
 
 const initialUserState = {
-  user: { username: null, email: null, id: null },
+  username: null,
+  email: null,
+  id: null,
   todaySummary: null,
   userData: null,
   isLoggedIn: false,
+  date: null,
+  error: null,
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState: initialUserState,
   extraReducers: {
+    [authOperations.refreshUserData.fulfilled](state, action) {
+      state.todaySummary = action.payload.days.daySummary;
+      state.date = action.payload.days.date;
+      state.userData = action.payload.userData;
+      state.username = action.payload.username;
+      state.email = action.payload.email;
+      state.id = action.payload.id;
+      state.isLoggedIn = true;
+    },
+    [authOperations.refreshUserData.rejected](state) {
+      state.username = null;
+      state.email = null;
+      state.id = null;
+      state.todaySummary = null;
+      state.userData = null;
+      state.isLoggedIn = false;
+    },
+
     [authOperations.register.fulfilled](state, action) {
+      state.date = action.payload.todaySummary.date;
       state.todaySummary = action.payload.todaySummary;
       state.userData = action.payload.user.userData;
-      state.user.username = action.payload.user.username;
-      state.user.email = action.payload.user.email;
-      state.user.id = action.payload.user.id;
+      state.username = action.payload.user.username;
+      state.email = action.payload.user.email;
+      state.id = action.payload.user.id;
       state.isLoggedIn = true;
     },
     [authOperations.logIn.fulfilled](state, action) {
+      state.date = action.payload.todaySummary.date;
       state.todaySummary = action.payload.todaySummary;
       state.userData = action.payload.user.userData;
-      state.user.username = action.payload.user.username;
-      state.user.email = action.payload.user.email;
-      state.user.id = action.payload.user.id;
+      state.username = action.payload.user.username;
+      state.email = action.payload.user.email;
+      state.id = action.payload.user.id;
       state.isLoggedIn = true;
     },
     [authOperations.logOut.fulfilled](state) {
-      state.user.username = null;
-      state.user.email = null;
-      state.user.id = null;
+      state.username = null;
+      state.email = null;
+      state.id = null;
       state.todaySummary = null;
       state.userData = null;
       state.isLoggedIn = false;
+      state.date = null;
     },
     [authOperations.logOut.rejected](state) {
-      state.user.username = null;
-      state.user.email = null;
-      state.user.id = null;
+      state.username = null;
+      state.email = null;
+      state.id = null;
       state.todaySummary = null;
       state.userData = null;
       state.isLoggedIn = false;
+      state.date = null;
     },
     [authOperations.refreshAccessToken.rejected](state) {
-      state.user.username = null;
-      state.user.email = null;
-      state.user.id = null;
+      state.username = null;
+      state.email = null;
+      state.id = null;
       state.todaySummary = null;
       state.userData = null;
+      state.isLoggedIn = false;
+      state.date = null;
     },
     [authOperations.refreshAccessToken.fulfilled](state) {
       state.isLoggedIn = true;
@@ -88,9 +116,9 @@ const authSlice = createSlice({
       state.error = null;
     },
     [authOperations.register.fulfilled](state, action) {
-      // state.user.username = action.payload.user.username;
-      // state.user.email = action.payload.user.email;
-      // state.user.id = action.payload.user.id;
+      // state.username = action.payload.user.username;
+      // state.email = action.payload.user.email;
+      // state.id = action.payload.user.id;
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
       state.sid = action.payload.sid;
@@ -105,9 +133,9 @@ const authSlice = createSlice({
       state.error = null;
     },
     [authOperations.logIn.fulfilled](state, action) {
-      // state.user.username = action.payload.user.username;
-      // state.user.email = action.payload.user.email;
-      // state.user.id = action.payload.user.id;
+      // state.username = action.payload.user.username;
+      // state.email = action.payload.user.email;
+      // state.id = action.payload.user.id;
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
       state.sid = action.payload.sid;
@@ -122,9 +150,9 @@ const authSlice = createSlice({
       state.error = null;
     },
     [authOperations.logOut.fulfilled](state) {
-      // state.user.username = null;
-      // state.user.email = null;
-      // state.user.id = null;
+      // state.username = null;
+      // state.email = null;
+      // state.id = null;
       state.accessToken = null;
       state.refreshToken = null;
       state.sid = null;
@@ -133,9 +161,9 @@ const authSlice = createSlice({
       // state.isLoggedIn = false;
     },
     [authOperations.logOut.rejected](state, action) {
-      // state.user.username = null;
-      // state.user.email = null;
-      // state.user.id = null;
+      // state.username = null;
+      // state.email = null;
+      // state.id = null;
       state.accessToken = null;
       state.refreshToken = null;
       state.sid = null;
@@ -155,15 +183,15 @@ const authSlice = createSlice({
       state.isRefreshingToken = false;
     },
     [authOperations.refreshAccessToken.rejected](state, action) {
-      // state.user.username = null;
-      // state.user.email = null;
-      // state.user.id = null;
+      // state.username = null;
+      // state.email = null;
+      // state.id = null;
       state.accessToken = null;
       state.refreshToken = null;
       state.sid = null;
       // state.todaySummary = null;
       // state.userData = null;
-      state.isLoggedIn = false;
+      // state.isLoggedIn = false;
       state.error = action.payload;
     },
   },
