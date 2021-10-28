@@ -7,9 +7,12 @@ import Modal from "../../components/modal/Modal";
 export default function MainPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [result, setResult] = useState([]);
+
   console.log(result);
 
-  const toggle = () => setIsOpen((prev) => !prev);
+  const toggle = () => {
+    setIsOpen((prev) => !prev);
+  };
   const setValue = (value) => {
     setResult(value);
   };
@@ -19,7 +22,7 @@ export default function MainPage() {
       <main className={style.main}>
         <DailyCaloriesForm toggle={toggle} setValue={setValue} />
         {isOpen && (
-          <Modal toggle={toggle}>
+          <Modal toggle={toggle} isRedirect={true}>
             <DailyCalorieIntake result={result} />
           </Modal>
         )}
