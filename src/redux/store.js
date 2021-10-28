@@ -25,7 +25,7 @@ const middleware = (getDefaultMiddleware) =>
 const authPersistConfig = {
     key: "auth",
     storage,
-    whitelist: ["user"],
+    // whitelist: ["user"],
 };
 
 const store = configureStore({
