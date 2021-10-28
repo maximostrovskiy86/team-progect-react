@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import style from "./RightSideBar.module.scss";
-import axios from "axios";
+// import axios from "axios";
 
 const RightSideBar = ({
   data,
@@ -10,12 +10,6 @@ const RightSideBar = ({
   kcalLeft,
   notAllowedProducts,
 }) => {
-  useEffect(() => {
-    axios
-      .get(`https://slimmom-backend.goit.global`)
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
   return (
     <div className={style.sideBarContainer}>
       <div className={style.characteristicBox}>
