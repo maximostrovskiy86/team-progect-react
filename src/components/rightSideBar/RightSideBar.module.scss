@@ -1,0 +1,88 @@
+.sideBarContainer {
+  padding: 40px 5px;
+  background-color: #f0f1f3;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    padding: 90px;
+    // background-image: url(../../images/rightSideBar/11rightSideBar_tablet.jpg);
+    // background-size: cover;
+  }
+  @media screen and (min-width: 1280px) {
+  }
+}
+.characteristicBox {
+  margin-left: auto;
+  margin-right: auto;
+  width: 290px;
+  margin-bottom: 40px;
+  @media screen and (min-width: 480px) {
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
+}
+
+.sideBarTitle {
+  margin: 0;
+  margin-bottom: 20px;
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+
+  color: #212121;
+}
+
+.sideBarList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  // @media screen and (min-width: 768px) {
+  //   margin-bottom: 0;
+  // }
+}
+
+.sideBarItem {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.sideBarItem_text {
+  display: flex;
+  justify-content: space-between;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+
+  color: #9b9faa;
+}
+
+.sideBarItem_span {
+  // display: inline-block;
+  // text-align: right;
+}
+
+.notAllowedProductsTitle {
+  margin: 0;
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+
+  color: #212121;
+}
+
+.notAllowedProductsBox {
+  margin-left: auto;
+  margin-right: auto;
+  width: 290px;
+}

@@ -14,10 +14,24 @@ const Modal = ({ toggle, children, isRedirect = false }) => {
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
+    const body = document.querySelector("body");
+    body.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
+      const body = document.querySelector("body");
+      body.style.overflow = "auto";
     };
   });
+  // useEffect(() => {
+  //   window.addEventListener("keydown", handleEscape);
+  //   const body = document.querySelector("body");
+  //   body.style.overflow = "hidden";
+  //   return () => {
+  //     window.removeEventListener("keydown", handleEscape);
+  //     const body = document.querySelector("body");
+  //     body.style.overflow = "auto";
+  //   };
+  // });
 
   const handleKeyDown = (event) => {
     if (event.code === "Escape") {
