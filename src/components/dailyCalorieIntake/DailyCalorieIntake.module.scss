@@ -3,8 +3,8 @@
   padding: 0;
 }
 .Calorie {
-  padding-left: 15px;
-  padding-right: 15px;
+  // padding-left: 15px;
+  // padding-right: 15px;
   @media screen and (min-width: 320px) {
     padding-left: 15px;
     padding-right: 15px;
@@ -24,18 +24,19 @@
   font-family: Verdana;
   font-style: normal;
   font-weight: bold;
-  text-align: center;
+  // text-align: center;
   color: #212121;
   font-size: 18px;
   line-height: 1.44;
   margin-top: 29px;
   padding-right: 15px;
   padding-left: 15px;
-  @media screen and (min-width: 320px) {
+  @media screen and (min-width: 321px) {
     margin-top: 65px;
     margin-bottom: 20px;
     font-size: 26px;
     line-height: 1.23;
+    text-align: center;
   }
   @media screen and (min-width: 768px) {
     padding-left: 40px;
@@ -45,6 +46,15 @@
     padding-left: 90px;
     padding-right: 90px;
   }
+}
+.CalorieValueText {
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.2px;
+  text-align: center;
+  letter-spacing: 0.04em;
 }
 .Line {
   border: 1px solid #e0e0e0;
@@ -84,4 +94,7 @@
   letter-spacing: 0.04em;
   color: #9b9faa;
   margin-left: 20px;
+}
+.CalorieItem {
+  margin-bottom: 20px;
 }
