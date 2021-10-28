@@ -78,10 +78,23 @@ const refreshAccessToken = createAsyncThunk(
   }
 );
 
+const refreshUserData = createAsyncThunk(
+  "/user",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post("/user");
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const operations = {
   register,
   logOut,
   logIn,
   refreshAccessToken,
+  refreshUserData,
 };
 export default operations;
