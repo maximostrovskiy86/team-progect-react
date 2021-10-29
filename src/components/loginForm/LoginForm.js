@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/authorization";
+import { Link } from "react-router-dom";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -52,7 +53,8 @@ export default function LoginForm() {
           />
         </label>
 
-        <button type="submit">Log in</button>
+        <button type="submit">Вход</button>
+        <Link to="/register">Регистрация</Link>
       </form>
     </div>
   );
