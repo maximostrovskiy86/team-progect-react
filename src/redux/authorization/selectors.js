@@ -4,10 +4,10 @@ const getUserId = (state) => state.user.id;
 const getIsRefreshingUser = (state) => state.auth.isRefreshingUser;
 
 const authSelectors = {
-  getIsLoggedIn,
-  getUserName,
-  getIsRefreshingUser,
-  getUserId,
+    getIsLoggedIn,
+    getUserName,
+    getIsRefreshingUser,
+    getUserId,
 };
 
 export default authSelectors;

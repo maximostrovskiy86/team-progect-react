@@ -5,17 +5,23 @@ import s from "./Modal.module.scss";
 import sprite from "../../images/modal/close.svg";
 import spriter from "../../images/modal/sprite.svg";
 import { useMediaQuery } from "react-responsive";
+import { useHistory } from "react-router";
 
 const modalRoot = document.querySelector("#modal-root");
 
-const Modal = ({ toggle, children }) => {
+const Modal = ({ toggle, children, isRedirect = false }) => {
+  const history = useHistory();
+
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
+    const body = document.querySelector("body");
+    body.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
+      const body = document.querySelector("body");
+      body.style.overflow = "auto";
     };
   });
-
   const handleKeyDown = (event) => {
     if (event.code === "Escape") {
       toggle();
@@ -30,6 +36,12 @@ const Modal = ({ toggle, children }) => {
   const isTabletOrDesktop = useMediaQuery({ query: "(min-width: 321px)" });
   const orMobile = useMediaQuery({ query: "(max-width: 320px)" });
 
+  const redirectToHome = () => history.push("/register");
+
+  const submit = () => {
+    toggle();
+    isRedirect && redirectToHome();
+  };
   return createPortal(
     <div className={s.Overlay} onClick={backdropClick}>
       <div className={s.Modal}>
@@ -45,11 +57,8 @@ const Modal = ({ toggle, children }) => {
             </svg>
           </div>
         )}
-        <ul>
-          <li>{children}</li>
-        </ul>
-
-        <button onClick={toggle} type="submit" className={s.button}>
+        {children}
+        <button onClick={submit} type="submit" className={s.button}>
           Начать худеть
         </button>
       </div>
