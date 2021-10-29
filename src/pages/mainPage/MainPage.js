@@ -2,7 +2,7 @@ import style from "./MainPage.module.css";
 import React, { useState } from "react";
 import DailyCaloriesForm from "../../components/dailyCaloriesForm/DailyCaloriesForm";
 import DailyCalorieIntake from "../../components/dailyCalorieIntake/DailyCalorieIntake";
-import Modal from "../../components/modal/Modal";
+// import Modal from "../../components/modal/Modal";
 import NavModale from "../../components/navModale/NavModale";
 
 export default function MainPage() {
