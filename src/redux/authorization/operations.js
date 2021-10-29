@@ -78,10 +78,26 @@ const refreshAccessToken = createAsyncThunk(
   }
 );
 
+const refreshUserData = createAsyncThunk(
+  "/user/refresh",
+  async (_, { rejectWithValue, getState }) => {
+    const state = getState();
+    const accessToken = state.auth.accessToken;
+    token.set(accessToken);
+    try {
+      const { data } = await axios.get("/user");
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const operations = {
   register,
   logOut,
   logIn,
   refreshAccessToken,
+  refreshUserData,
 };
 export default operations;
