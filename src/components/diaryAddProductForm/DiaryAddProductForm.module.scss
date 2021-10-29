@@ -1,0 +1,41 @@
+.diaryProductForm {
+  margin: 80px 15px 0;
+}
+
+.productInput {
+  width: 290px;
+  padding: 10px;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+}
+.productInput::placeholder {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+
+  color: #9b9faa;
+}
+
+.weightInput {
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.weightInput::placeholder {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+
+  color: #9b9faa;
+}
+.diaryProductFormBtn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

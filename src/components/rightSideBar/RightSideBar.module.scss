@@ -11,6 +11,8 @@
     // background-size: cover;
   }
   @media screen and (min-width: 1280px) {
+    display: block;
+    height: 100vh;
   }
 }
 .characteristicBox {
