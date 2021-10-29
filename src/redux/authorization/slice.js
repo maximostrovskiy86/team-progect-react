@@ -73,6 +73,7 @@ const userSlice = createSlice({
       state.user.id = null;
       state.todaySummary = null;
       state.userData = null;
+      state.isLoggedIn = false;
     },
     [authOperations.refreshAccessToken.fulfilled](state) {
       state.isLoggedIn = true;

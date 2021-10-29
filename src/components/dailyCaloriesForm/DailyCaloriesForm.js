@@ -3,9 +3,17 @@ import {Formik, Field, Form} from "formik";
 import BasicFormSchema from "./DailyCaloriesFormValidator";
 import styles from "./DailyCaloriesForm.module.scss";
 import axios from "axios";
+import {useSelector, useDispatch} from "react-redux";
+// import {dailyRateAction} from "../../redux/user";
+import {authSelectors, authOperations} from "../../redux/authorization";
 // import { Modal } from "bootstrap";
 
 const CalculatorСalorieForm = ({toggle, setValue}) => {
+    const isLogged = useSelector(authSelectors.getIsLoggedIn);
+    const id = useSelector(authSelectors.getUserId);
+    const dispatch = useDispatch();
+    console.log(id)
+
     const getNumbers = (data) => {
         const newData = {};
         const keys = Object.keys(data);
@@ -30,16 +38,34 @@ const CalculatorСalorieForm = ({toggle, setValue}) => {
                         }}
                         validationSchema={BasicFormSchema}
                         onSubmit={(values) => {
-                            axios
-                                .post(
-                                    "https://slimmom-backend.goit.global/daily-rate",
-                                    getNumbers(values)
-                                )
-                                .then((response) => {
-                                    console.log(response.data);
-                                    toggle();
-                                    setValue(response.data);
-                                });
+                            {
+                                isLogged ?
+                                    (axios
+                                        .post(
+                                            "https://slimmom-backend.goit.global/daily-rate/" + id,
+                                            getNumbers(values)
+                                        )
+                                        .then((response) => {
+                                            console.log(response.data);
+                                            console.log('LOG c ID')
+                                            setValue(response.data);
+                                            // dispatch();
+                                        }))
+                                        // .then(({ data }) => dispatch(dailyRateAction.da)
+                                    :
+                                    (axios
+                                        .post(
+                                            "https://slimmom-backend.goit.global/daily-rate",
+                                            getNumbers(values)
+                                        )
+                                        .then((response) => {
+                                            console.log(response.data);
+                                            console.log('LOG------------------------')
+
+                                            setValue(response.data);
+                                            toggle();
+                                        }));
+                            }
                         }}
                         render={({errors, touched, values}) => (
                             <Form className={styles.formContainer}>
