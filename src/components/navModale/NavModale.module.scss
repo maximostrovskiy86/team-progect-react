@@ -1,27 +1,31 @@
-// .Overlay {
-//   margin-top: 80px;
-// }
-
-.NavModale {
+.Overlay {
+  display: flex;
   margin-top: 55px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
   background: rgba(33, 33, 33, 0.12);
   z-index: 1200;
-  height: 100vh;
   background: #264061;
 }
-.NavModaleMenu {
-  align-items: center;
-  justify-content: center;
+.NavModale {
+  padding-left: 15px;
+  padding-right: 15px;
+  @media screen and (min-width: 320px) {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 29px;
+  }
 }
 .NavModalelist {
+  display: flex;
   font-family: Verdana;
   font-style: normal;
   font-weight: bold;
@@ -31,4 +35,31 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #ffffff;
+}
+.navLink {
+  display: block;
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+}
+.activeNav {
+  display: block;
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #9b9faa;
+  // display: flex;
 }
