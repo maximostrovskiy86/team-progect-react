@@ -30,28 +30,17 @@ const CalculatorСalorieForm = ({toggle, setValue}) => {
                 <div className={styles.inputWrapper}>
                     <Formik
                         initialValues={{
+                            weight: "",
                             height: "",
                             age: "",
-                            bloodType: "1",
-                            weight: "",
                             desiredWeight: "",
+                            bloodType: "",
                         }}
                         validationSchema={BasicFormSchema}
                         onSubmit={(values) => {
                             {
                                 isLogged ?
-                                    (axios
-                                        .post(
-                                            "https://slimmom-backend.goit.global/daily-rate/" + id,
-                                            getNumbers(values)
-                                        )
-                                        .then((response) => {
-                                            console.log(response.data);
-                                            console.log('LOG c ID')
-                                            setValue(response.data);
-                                            // dispatch();
-                                        }))
-                                        // .then(({ data }) => dispatch(dailyRateAction.da)
+                                    dispatch(authOperations.rateDailyUser(getNumbers(values)))
                                     :
                                     (axios
                                         .post(

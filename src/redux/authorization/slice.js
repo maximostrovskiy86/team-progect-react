@@ -33,6 +33,11 @@ const initialUserState = {
   isLoggedIn: false,
   date: null,
   error: null,
+  // notAllowedProducts: [],
+  // date: "2020-12-31",
+  // kcalLeft: 0,
+  // kcalConsumed: 0,
+  // percentsOfDailyRate: 0,
 };
 
 const userSlice = createSlice({
@@ -104,6 +109,18 @@ const userSlice = createSlice({
     },
     [authOperations.refreshAccessToken.fulfilled](state) {
       state.isLoggedIn = true;
+    },
+    [authOperations.rateDailyUser.fulfilled](state, action) {
+      state.userData.dailyRate = action.payload.dailyRate;
+      state.todaySummary = action.payload.summaries;
+      state.userData.notAllowedProducts = action.payload.notAllowedProducts;
+
+
+      // state.userData = action.payload.userData;
+      // state.username = action.payload.username;
+      // state.email = action.payload.email;
+      // state.id  = action.payload.id;
+      // state.isLoggedIn = true;
     },
   },
 });

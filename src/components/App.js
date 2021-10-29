@@ -5,6 +5,7 @@ import PublicRoute from "../routes/PublicRoute";
 import PrivateRoute from "../routes/PrivateRoute";
 import { Redirect, Switch } from "react-router";
 import Header from "./header/Header";
+import Container from "./container/Container";
 // import Loader from "react-loader-spinner";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
@@ -44,7 +45,7 @@ export default function App() {
 
   return (
     !isRefreshingUser && (
-      <>
+      <Container>
         <Header />
         <Switch>
           <Suspense
@@ -84,7 +85,7 @@ export default function App() {
             <Redirect to="/" />
           </Suspense>
         </Switch>
-      </>
+      </Container>
     )
   );
 }
