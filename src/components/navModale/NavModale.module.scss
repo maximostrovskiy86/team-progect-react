@@ -1,0 +1,34 @@
+// .Overlay {
+//   margin-top: 80px;
+// }
+
+.NavModale {
+  margin-top: 55px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(33, 33, 33, 0.12);
+  z-index: 1200;
+  height: 100vh;
+  background: #264061;
+}
+.NavModaleMenu {
+  align-items: center;
+  justify-content: center;
+}
+.NavModalelist {
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
