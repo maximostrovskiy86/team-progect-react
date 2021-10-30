@@ -3,10 +3,14 @@ import DailyCaloriesForm from "../../components/dailyCaloriesForm/DailyCaloriesF
 import RightSideBar from "../../components/rightSideBar/RightSideBar";
 
 export default function CalculatorPage() {
-    return (
-        <div className={style.calcPageWrapper}>
-            <DailyCaloriesForm/>
-            <RightSideBar/>
-        </div>
-    );
+  return (
+    <div className={style.calcPageWrapper}>
+      <div className={style.calcPageContainer}>
+        <DailyCaloriesForm />
+      </div>
+      <div className={style.RightSideBarContainer}>
+        <RightSideBar />
+      </div>
+    </div>
+  );
 }

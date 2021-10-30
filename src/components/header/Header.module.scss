@@ -6,7 +6,8 @@
     margin-bottom: 120px;
   }
   @media screen and (min-width: 1280px) {
-    margin-bottom: 144px;
+    margin-bottom: 0;
+    padding-bottom: 0;
     border-bottom: none;
   }
 }
