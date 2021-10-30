@@ -29,7 +29,6 @@ export default function RegistrationForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(authOperations.register({ username, email, password }));
-    // dispatch(authOperations.logIn({ email, password }));
     resetForm();
   };
 
@@ -44,6 +43,9 @@ export default function RegistrationForm() {
             name="username"
             value={username}
             onChange={handleChange}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+            required
           />
         </label>
 
@@ -54,6 +56,9 @@ export default function RegistrationForm() {
             name="email"
             value={email}
             onChange={handleChange}
+            pattern=" /^(?!.*@.*@.*$)(?!.*@.*\-\-.*\..*$)(?!.*@.*\-\..*$)(?!.*@.*\-$)(.*@.+(\..{1,11})?)$/"
+            title="Email должен содержать символ @ и иметь формат example@mail.com"
+            required
           />
         </label>
 
@@ -64,11 +69,14 @@ export default function RegistrationForm() {
             name="password"
             value={password}
             onChange={handleChange}
+            pattern="[0-9a-zA-Z!@#$%^&*]{7,}"
+            title="Пароль должен состоять минимум из 7 символов, может состоять из цифр, букв латинского алфавита и спецсимволов ! @ # $ % ^ & *"
+            required
           />
         </label>
 
-        <button type="submit">Вход</button>
-        <Link to="/login">Регистрация</Link>
+        <button type="submit">Регистрация</button>
+        <Link to="/login">Вход</Link>
       </form>
     </div>
   );
