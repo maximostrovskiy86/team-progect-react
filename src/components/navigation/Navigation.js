@@ -7,14 +7,6 @@ const Navigation = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <nav className={style.nav}>
-      {/*<NavLink*/}
-      {/*  className={style.navLogo}*/}
-      {/*  activeClassName={style.activeNav}*/}
-      {/*  to="/"*/}
-      {/*  exact*/}
-      {/*>*/}
-      {/*  <Logo />*/}
-      {/*</NavLink>*/}
       {isLoggedIn && (
         <>
           <NavLink
