@@ -3,10 +3,16 @@
   font-weight: bold;
   font-size: 14px;
   line-height: 13px;
-  text-align: right;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
 
+  color: #9b9faa;
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+.activeNav {
   color: #212121;
 }
