@@ -3,9 +3,9 @@ import style from "./RightSideBar.module.scss";
 import {useSelector} from "react-redux";
 import {dailyRateSelector} from "../../redux/user";
 
-const RightSideBar = () => {
-    const dailyRate = useSelector(dailyRateSelector.getDailyRate);
-    const date = useSelector(dailyRateSelector.getDate);
+const RightSideBar = ({date}) => {
+    const dailyRate = useSelector((state) =>dailyRateSelector.getDailyRate(state, date));
+    // const date = useSelector(dailyRateSelector.getDate);
     const notAllowedProducts = useSelector(dailyRateSelector.getNotAllowedProducts);
 
     return (
