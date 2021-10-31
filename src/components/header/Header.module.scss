@@ -1,24 +1,69 @@
 .headerWrapper {
-  margin-bottom: 50px;
-  border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 18px;
-  @media screen and (min-width: 768px) {
-    margin-bottom: 120px;
-  }
-  @media screen and (min-width: 1280px) {
-    margin-bottom: 144px;
-    border-bottom: none;
-  }
+    border-bottom: 2px solid #e0e0e0;
+    width: inherit;
+    @media screen and (min-width: 768px) {
+        //border-bottom: 2px solid #e0e0e0;
+    }
+    @media screen and (min-width: 1200px) {
+        border-bottom: none;
+    }
 }
+
 .headerContainer {
-  display: flex;
-  align-items: center;
-  padding: 18px 15px 0;
-  @media screen and (min-width: 768px) {
-    padding: 17px 87px 0;
-  }
-  @media screen and (min-width: 1280px) {
-    padding-top: 82px;
-    padding-left: 90px;
-  }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: inherit;
+    padding: 18px 0;
+    @media screen and (min-width: 768px) {
+        padding: 17px 0;
+        //margin-right: 69px;
+        //margin-left: 69px;
+    }
+    @media screen and (min-width: 1200px) {
+        //padding-top: 82px;
+        //padding-left: 90px;
+        align-items: baseline;
+        justify-content: flex-start;
+    }
 }
+
+.menuRight {
+    display: flex;
+    align-items: center;
+
+    @media screen and (min-width: 1200px) {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+.navWrapper {
+    width: inherit;
+}
+
+.navWrapperLogin {
+    display: flex;
+}
+
+.navWrapperLogOut {
+    display: block;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    text-decoration: none;
+    @media screen and (min-width: 1200px) {
+        position: relative;
+        top: 6px;
+    }
+}
+
+.hide {
+    display: none
+}
+
+
+

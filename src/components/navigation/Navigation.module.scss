@@ -10,3 +10,13 @@
 
   color: #212121;
 }
+
+.listNavigation {
+  display: flex;
+  line-height: 26px;
+  padding-left: 22px;
+  border-left: 2px solid #E0E0E0;
+  li + li {
+    margin-left: 22px;
+  }
+}

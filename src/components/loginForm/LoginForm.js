@@ -8,6 +8,8 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
+
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case "email":
@@ -40,7 +42,7 @@ export default function LoginForm() {
             name="email"
             value={email}
             onChange={handleChange}
-            pattern="/\A[^@]+@([^@\.]+\.)+[^@\.]+\z/"
+            // pattern="/\A[^@]+@([^@\.]+\.)+[^@\.]+\z/"
             // title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             // required
           />
@@ -53,7 +55,7 @@ export default function LoginForm() {
             name="password"
             value={password}
             onChange={handleChange}
-            pattern="[0-9a-zA-Z!@#$%^&*]{7,}"
+            // pattern="[0-9a-zA-Z!@#$%^&*]{7,}"
             title="Пароль должен состоять минимум из 7 символов"
             required
           />

@@ -1,15 +1,32 @@
 import React from "react";
-// import logoFull from "../../images/logoJPG.jpg";
 import logo from "../../images/logo-mob-JPG.jpg";
-const Logo = () => {
-  return (
-    <img srcSet={logo} alt="logo" width="47" height="44" />
+import logoTablet from "../../images/logo_tablet.png";
+import logoDesktop from "../../images/logoFull.png";
 
-    // <picture>
-    //   <source srcset="../../images/logoJPG.jpg" media="(min-width:768px)" />
-    //   <img src="../../images/logo-mob-JPG.jpg" alt="SlimMom" />
-    // </picture>
-  );
+const Logo = () => {
+    return (
+        <>
+            <picture>
+                <source
+                    srcSet={logoDesktop}
+                    media="(min-width: 1200px)"
+                />
+                <source
+                    srcSet={logoTablet}
+                    media="(min-width: 768px)"
+                />
+                <source
+                    srcSet={logo}
+                    media="(max-width: 767px)"
+                />
+                <img
+                    className="team-list__images"
+                    src="../../images/logo.png"
+                    alt="Логотип"
+                />
+            </picture>
+        </>
+    );
 };
 
 export default Logo;

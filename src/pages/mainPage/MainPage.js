@@ -1,4 +1,4 @@
-import style from "./MainPage.module.css";
+import style from "./MainPage.module.scss";
 import React, { useState } from "react";
 import DailyCaloriesForm from "../../components/dailyCaloriesForm/DailyCaloriesForm";
 import DailyCalorieIntake from "../../components/dailyCalorieIntake/DailyCalorieIntake";
