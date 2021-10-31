@@ -1,6 +1,28 @@
 .diaryPageWraper {
   @media screen and (min-width: 1280px) {
     display: flex;
-    justify-content: space-between;
+    padding: 0 115px;
+    // padding-top: 116px;
+    // justify-content: space-between;
   }
+}
+
+.dairyFormContainer {
+  padding: 0 15px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 290px;
+  @media screen and (min-width: 768px) {
+    width: 590px;
+    padding: 0 90px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding: 0;
+    padding-top: 146px;
+    margin: 0;
+  }
+}
+
+.RightSideBarContainer {
+  background-color: #f0f1f3;
 }

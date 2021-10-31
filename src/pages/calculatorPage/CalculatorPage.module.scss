@@ -1,13 +1,27 @@
 .calcPageWrapper {
-    @media screen and (min-width: 768px) {
-        display: flex;
-    }
-}
-
-.calculatorPageWraper {
   @media screen and (min-width: 1280px) {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+  }
+}
+.calcPageContainer {
+  width: 250px;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  @media screen and (min-width: 768px) {
+    width: 605px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin: 0;
   }
 }
 
+.RightSideBarContainer {
+  background-color: #f0f1f3;
+}
+// .calculatorPageWraper {
+//   @media screen and (min-width: 1280px) {
+//     display: flex;
+//     justify-content: space-between;
+//   }
+// }

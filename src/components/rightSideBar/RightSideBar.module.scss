@@ -1,18 +1,27 @@
 .sideBarContainer {
   padding: 40px 5px;
   background-color: #f0f1f3;
-  display: inline-flex;
-  justify-content: space-between;
   @media screen and (min-width: 768px) {
-    flex-direction: column;
+    display: flex;
+    width: 590px;
 
-    padding: 90px;
-    // background-image: url(../../images/rightSideBar/11rightSideBar_tablet.jpg);
-    // background-size: cover;
+    padding: 0;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(../../images/rightSideBar/tabl.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top 90% left 142px;
   }
   @media screen and (min-width: 1280px) {
     display: block;
-    height: 100vh;
+    width: 320px;
+    padding: 146px 72px 160px 72px;
+    background-image: url(../../images/rightSideBar/desk.png);
+    background-size: contain;
+    background-position: top 90% left 67px;
   }
 }
 .characteristicBox {
@@ -20,10 +29,14 @@
   margin-right: auto;
   width: 290px;
   margin-bottom: 40px;
-  @media screen and (min-width: 480px) {
-  }
   @media screen and (min-width: 768px) {
-    margin-bottom: 0;
+    margin: 0;
+    width: 250px;
+    margin-right: 60px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin: 0;
+    margin-bottom: 60px;
   }
 }
 
@@ -61,19 +74,15 @@
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
-  line-height: 17px;
+  line-height: 1.21;
   letter-spacing: 0.04em;
 
   color: #9b9faa;
 }
 
-.sideBarItem_span {
-  // display: inline-block;
-  // text-align: right;
-}
-
 .notAllowedProductsTitle {
   margin: 0;
+  margin-bottom: 20px;
 
   font-style: normal;
   font-weight: bold;
@@ -84,8 +93,23 @@
   color: #212121;
 }
 
+.notAllowedProductsItems {
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+
+  color: #9b9faa;
+}
+
 .notAllowedProductsBox {
   margin-left: auto;
   margin-right: auto;
   width: 290px;
+  @media screen and (min-width: 768px) {
+    margin: 0;
+    width: 260px;
+  }
 }

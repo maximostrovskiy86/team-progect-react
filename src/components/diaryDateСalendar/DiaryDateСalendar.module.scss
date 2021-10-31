@@ -1,0 +1,39 @@
+.сalendar {
+  display: flex;
+  // flex-direction: row;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  position: relative;
+  @media screen and (min-width: 1280px) {
+    margin: 0;
+  }
+}
+
+.datePicker {
+  text-align: left;
+  border-color: transparent;
+  font-weight: 700;
+  font-size: 18px;
+  width: 125px;
+  @media screen and (min-width: 768px) {
+    font-size: 34px;
+    line-height: 41px;
+    width: 220px;
+  }
+}
+
+.datePickerLogo {
+  width: 20px;
+}
+
+.datePickerLogo {
+  align-items: center;
+  position: absolute;
+  top: 4px;
+  left: 125px;
+  @media screen and (min-width: 768px) {
+    top: 10px;
+    left: 200px;
+  }
+}
