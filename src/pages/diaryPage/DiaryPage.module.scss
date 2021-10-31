@@ -1,7 +1,7 @@
 .diaryPageWraper {
   @media screen and (min-width: 1280px) {
     display: flex;
-    padding: 0 115px;
+    //padding: 0 115px;
     // padding-top: 116px;
     // justify-content: space-between;
   }
@@ -20,9 +20,13 @@
     padding: 0;
     padding-top: 146px;
     margin: 0;
+    flex-basis: 60%;
   }
 }
 
 .RightSideBarContainer {
   background-color: #f0f1f3;
+  @media screen and (min-width: 1280px) {
+    flex-basis: 40%;
+  }
 }
