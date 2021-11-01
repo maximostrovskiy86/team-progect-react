@@ -7,10 +7,10 @@ import styles from "./DiaryDateСalendar.module.scss";
 // import {dailyOperations} from "../../redux/daily";
 // import {useDispatch} from "react-redux";
 
-const DiaryDateСalendar = ({ selectDate }) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const customeDate = moment(startDate).format("YYYY-MM-DD");
-  selectDate(customeDate);
+const DiaryDateСalendar = ({ selectDate, date }) => {
+  // const [startDate, setStartDate] = useState(new Date());
+  // const customeDate = moment(date).format("YYYY-MM-DD");
+  // selectDate(customeDate);
   // const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -22,9 +22,9 @@ const DiaryDateСalendar = ({ selectDate }) => {
       <label>
         <DatePicker
           className={styles.datePicker}
-          selected={startDate}
+          selected={date}
           dateFormat="dd.MM.yyyy"
-          onChange={(date) => setStartDate(date)}
+          onChange={(date) => selectDate(date)}
         />
         <CalendarLogo className={styles.datePickerLogo} />
       </label>

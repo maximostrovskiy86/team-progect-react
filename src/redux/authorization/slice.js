@@ -14,14 +14,14 @@ const userPersistConfig = {
 };
 
 const initialState = {
-  // user: { username: null, email: null, id: null },
   accessToken: null,
   refreshToken: null,
   sid: null,
+  error: null,
   // isLoggedIn: false,
   // todaySummary: null,
   // userData: null,
-  error: null,
+  // user: { username: null, email: null, id: null },
 };
 
 const initialUserState = {
@@ -110,18 +110,18 @@ const userSlice = createSlice({
     [authOperations.refreshAccessToken.fulfilled](state) {
       state.isLoggedIn = true;
     },
-    [authOperations.rateDailyUser.fulfilled](state, action) {
-      state.userData.dailyRate = action.payload.dailyRate;
-      state.todaySummary = action.payload.summaries;
-      state.userData.notAllowedProducts = action.payload.notAllowedProducts;
-
-
-      // state.userData = action.payload.userData;
-      // state.username = action.payload.username;
-      // state.email = action.payload.email;
-      // state.id  = action.payload.id;
-      // state.isLoggedIn = true;
-    },
+    // [authOperations.rateDailyUser.fulfilled](state, action) {
+    //   state.userData.dailyRate = action.payload.dailyRate;
+    //   state.todaySummary = action.payload.summaries;
+    //   state.userData.notAllowedProducts = action.payload.notAllowedProducts;
+    //
+    //
+    //   // state.userData = action.payload.userData;
+    //   // state.username = action.payload.username;
+    //   // state.email = action.payload.email;
+    //   // state.id  = action.payload.id;
+    //   // state.isLoggedIn = true;
+    // },
   },
 });
 

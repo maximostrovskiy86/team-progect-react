@@ -2,12 +2,16 @@ const getDailyKcalLeft = (state) => state.daily.kcalLeft;
 const getKcalConsumed = state => state.daily.kcalConsumed;
 const getPercentsOfDailyRate = state => state.daily.percentsOfDailyRate;
 const getDailyRate = state => state.daily.dailyRate;
+const getNotAllowedProducts = state => state.daily.notAllowedProducts;
+const getDate = state => state.daily.date;
 
 const selectors = {
     getDailyKcalLeft,
     getKcalConsumed,
     getPercentsOfDailyRate,
     getDailyRate,
+    getNotAllowedProducts,
+    getDate,
 }
 
 export default selectors;

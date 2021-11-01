@@ -93,27 +93,6 @@ const refreshUserData = createAsyncThunk(
     }
 );
 
-const rateDailyUser = createAsyncThunk(
-    "/user/rateDaily",
-    async (credentials, {rejectWithValue, getState}) => {
-        const state = getState();
-        console.log(state)
-        console.log('LOG с ID')
-
-        const id = state.user.id;
-        const accessToken = state.auth.accessToken;
-        token.set(accessToken);
-
-        try {
-            const {data} = await axios.post(`/daily-rate/${id}`, credentials);
-            console.log(credentials)
-            return data;
-        } catch (error) {
-            return rejectWithValue(error.message);
-        }
-    }
-);
-
 // export const rateDailyUser = (values) => async (dispatch, getState) => {
 //     dispatch(updateCalculatorRequest());
 //     try {
@@ -137,6 +116,5 @@ const operations = {
     logIn,
     refreshAccessToken,
     refreshUserData,
-    rateDailyUser,
 };
 export default operations;

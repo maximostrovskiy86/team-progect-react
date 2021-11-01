@@ -9,24 +9,24 @@ import { useDispatch } from "react-redux";
 
 export default function DiaryPage() {
   const dispatch = useDispatch();
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(new Date());
   console.log(date);
 
-  useEffect(() => {
-    dispatch(dailyOperations.fetchDayInfo({ date: date }));
-    // axios
-    //     .post('https://slimmom-backend.goit.global/day/info', {date: date})
-    //     .then((response) => {
-    //         console.log(response.data);
-    //         console.log('Date------------------------')
-    //     })
-  }, [date]);
+  // useEffect(() => {
+  //   dispatch(dailyOperations.fetchDayInfo({ date: date }));
+  //   // axios
+  //   //     .post('https://slimmom-backend.goit.global/day/info', {date: date})
+  //   //     .then((response) => {
+  //   //         console.log(response.data);
+  //   //         console.log('Date------------------------')
+  //   //     })
+  // }, [date]);
 
   return (
     <div className={style.diaryPageWraper}>
       <div className={style.dairyFormContainer}>
         <DiaryDateСalendar date={date} selectDate={setDate} />
-        <DiaryAddProductForm />
+        <DiaryAddProductForm date={date} />
       </div>
       <div className={style.RightSideBarContainer}>
         <RightSideBar date={date} />

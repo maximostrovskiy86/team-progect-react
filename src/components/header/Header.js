@@ -14,7 +14,7 @@ import Container from "../container/Container";
 const Header = (props) => {
     const {width} = props.size;
     const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-
+    props.size.width = 500;
     return (
         <>
             <header className={style.headerWrapper}>
