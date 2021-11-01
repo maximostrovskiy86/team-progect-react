@@ -26,6 +26,7 @@ const NavModale = ({ toggle }) => {
     <div className={s.Overlay}>
       <div className={s.NavModale}>
         <NavLink
+          onClick={toggle}
           className={s.navLink}
           activeClassName={s.activeNav}
           to="/diary"
@@ -34,6 +35,7 @@ const NavModale = ({ toggle }) => {
           Дневник
         </NavLink>
         <NavLink
+          onClick={toggle}
           className={s.navLink}
           activeClassName={s.activeNav}
           to="/calculator"

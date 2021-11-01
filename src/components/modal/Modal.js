@@ -6,12 +6,12 @@ import sprite from "../../images/modal/close.svg";
 import spriter from "../../images/modal/sprite.svg";
 import { useMediaQuery } from "react-responsive";
 import { useHistory } from "react-router";
+import Button from "../button/Button";
 
 const modalRoot = document.querySelector("#modal-root");
 
-const Modal = ({ toggle, children, isRedirect = false }) => {
+const Modal = ({ toggle, text, children, isRedirect = false }) => {
   const history = useHistory();
-
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
     const body = document.querySelector("body");
@@ -58,9 +58,10 @@ const Modal = ({ toggle, children, isRedirect = false }) => {
           </div>
         )}
         {children}
-        <button onClick={submit} type="submit" className={s.button}>
+        <Button onClick={submit}>{(text = "Начать худеть")}</Button>
+        {/* <button onClick={submit} type="submit" className={s.button}>
           Начать худеть
-        </button>
+        </button> */}
       </div>
     </div>,
     modalRoot

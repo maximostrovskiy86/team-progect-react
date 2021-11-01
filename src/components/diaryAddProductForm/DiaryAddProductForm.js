@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./DiaryAddProductForm.module.scss";
+
 const DiaryAddProductForm = () => {
   const onHandleSubmit = (e) => {
     e.preventDefault();

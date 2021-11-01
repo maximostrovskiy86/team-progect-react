@@ -1,6 +1,6 @@
 .Overlay {
   display: flex;
-  margin-top: 55px;
+  margin-top: 78px;
   position: fixed;
   top: 0;
   left: 0;
@@ -13,6 +13,7 @@
   background: #264061;
 }
 .NavModale {
+  // display: flex;
   padding-left: 15px;
   padding-right: 15px;
   @media screen and (min-width: 320px) {
@@ -25,7 +26,7 @@
   }
 }
 .NavModalelist {
-  display: flex;
+  // display: flex;
   font-family: Verdana;
   font-style: normal;
   font-weight: bold;
@@ -48,15 +49,16 @@
   text-transform: uppercase;
   color: #ffffff;
   text-decoration: none;
-  display: flex;
+  // display: flex;
 }
 .activeNav {
-  display: block;
+  // display: block;
   font-family: Verdana;
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
   line-height: 29px;
+  text-align: center;
   text-align: center;
   letter-spacing: 0.04em;
   text-transform: uppercase;
