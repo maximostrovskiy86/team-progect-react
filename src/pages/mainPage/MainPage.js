@@ -8,8 +8,6 @@ export default function MainPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [result, setResult] = useState([]);
 
-  console.log(result);
-
   const toggle = () => {
     setIsOpen((prev) => !prev);
   };

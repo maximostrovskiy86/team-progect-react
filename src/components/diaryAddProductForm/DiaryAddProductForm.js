@@ -12,9 +12,7 @@ const DiaryAddProductForm = ({date}) => {
     const [products, setProducts] = useState([]);
     const [weight, setWeight] = useState('');
     const dispatch = useDispatch()
-
     // const [id, setId] = useState(null);
-
 
     const handleInput = (e) => {
         const {value} = e.target;
@@ -34,8 +32,6 @@ const DiaryAddProductForm = ({date}) => {
 
                 setProducts(data)
             })
-
-
     };
 
     const getWeight = (e) => {
@@ -61,7 +57,6 @@ const DiaryAddProductForm = ({date}) => {
         console.log(value)
         return products.find(item => item.title.ru === value);
     }
-
 
     return (
         <form className={style.diaryProductForm} onSubmit={setProduct}>
