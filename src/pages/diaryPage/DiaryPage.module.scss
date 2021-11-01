@@ -1,31 +1,35 @@
 .diaryPageWraper {
-  @media screen and (min-width: 1280px) {
-    display: flex;
-    //padding: 0 115px;
-    // padding-top: 116px;
-    // justify-content: space-between;
-  }
+    @media screen and (min-width: 1200px) {
+        width: 1050px;
+        display: flex;
+        margin: 0 auto;
+    }
 }
 
 .dairyFormContainer {
-  padding: 0 15px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 290px;
-  @media screen and (min-width: 768px) {
-    width: 590px;
-    padding: 0 90px;
-  }
-  @media screen and (min-width: 1280px) {
-    padding:  146px 0 0 0;
-    margin: 0;
-    flex-basis: 60%;
-  }
+    padding: 0 15px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 290px;
+    @media screen and (min-width: 480px) {
+        width: 480px;
+    }
+    @media screen and (min-width: 768px) {
+        min-width: 768px;
+        // padding: 0 90px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        min-width: unset;
+        margin: 0;
+        padding: 146px 0 0 0;
+        width: 60%;
+    }
 }
 
 .RightSideBarContainer {
-  background-color: #f0f1f3;
-  @media screen and (min-width: 1280px) {
-    flex-basis: 40%;
-  }
+    background-color: #f0f1f3;
+    @media screen and (min-width: 1200px) {
+        width: 40%;
+    }
 }

@@ -1,52 +1,50 @@
 .userBlock {
-    display: flex;
-    align-items: center;
-    height: 40px;
-    margin-right: -15px;
-    margin-left: -15px;
-    padding: 0 15px;
-    background-color: #EFF1F3;
-    @media screen and (min-width: 360px) {
-        margin-right: 0;
-        margin-left: 0;
-    }
-    @media screen and (min-width: 768px) {
-        background-color: transparent;
-        margin-right: 53px;
-    }
-
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-right: -15px;
+  margin-left: -15px;
+  padding: 0 15px;
+  background-color: #eff1f3;
+  @media screen and (min-width: 360px) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  @media screen and (min-width: 768px) {
+    background-color: transparent;
+    margin-right: 53px;
+  }
 }
 
 .wrapper {
-    @media screen and (max-width: 768px) {
-        margin-left: auto;
-    }
+  @media screen and (max-width: 768px) {
+    margin-left: auto;
+  }
 }
 
 .userName {
-    display: inline-block;
-    padding-right: 22px;
-    border-right: 2px solid #E0E0E0;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 26px;
-    text-align: right;
-    color: #000;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-
+  display: inline-block;
+  padding-right: 22px;
+  border-right: 2px solid #e0e0e0;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 26px;
+  text-align: right;
+  color: #000;
+  letter-spacing: 0.04em;
+  cursor: pointer;
 }
 
 .logBtn {
-    margin-left: 22px;
-    color: #9B9FAA;
-    font-weight: 700;
-    border: none;
-    outline: none;
-    background: none;
-    cursor: pointer;
+  margin-left: 22px;
+  color: #9b9faa;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
 }
 
 .hide {
-    display: none
+  display: none;
 }

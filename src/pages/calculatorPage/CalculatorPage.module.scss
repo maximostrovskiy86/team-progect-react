@@ -1,17 +1,19 @@
 .calcPageWrapper {
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1200px) {
     display: flex;
     justify-content: center;
   }
 }
 .calcPageContainer {
   width: 250px;
-  margin: 0 auto;
-  margin-bottom: 60px;
+  margin: 40px auto 60px;
   @media screen and (min-width: 768px) {
-    width: 605px;
+    width: 768px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 100px auto 75px;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1200px) {
     flex-basis: 60%;
     margin: 0;
   }
