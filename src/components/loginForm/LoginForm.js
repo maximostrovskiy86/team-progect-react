@@ -2,13 +2,12 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/authorization";
 import { Link } from "react-router-dom";
+import styles from "./LoginForm.module.css";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -31,12 +30,11 @@ export default function LoginForm() {
   };
 
   return (
-    <div>
-      <h2>Login form</h2>
+    <div className={styles.formWrapper}>
+      <h2 className={styles.title}>ВХОД</h2>
 
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <label>
-          Email
+      <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
+        <label className={styles.formLabel}>
           <input
             type="email"
             name="email"
@@ -45,11 +43,12 @@ export default function LoginForm() {
             pattern=" /^(?!.*@.*@.*$)(?!.*@.*\-\-.*\..*$)(?!.*@.*\-\..*$)(?!.*@.*\-$)(.*@.+(\..{1,11})?)$/"
             title="Email должен содержать символ @ и иметь формат example@mail.com"
             required
+            placeholder="Логин *"
+            className={styles.field}
           />
         </label>
 
-        <label>
-          Password
+        <label className={styles.formLabel}>
           <input
             type="password"
             name="password"
@@ -58,11 +57,19 @@ export default function LoginForm() {
             pattern="[0-9a-zA-Z!@#$%^&*]{7,}"
             title="Пароль должен состоять минимум из 7 символов, может состоять из цифр, букв латинского алфавита и спецсимволов ! @ # $ % ^ & *"
             required
+            placeholder="Пароль *"
+            className={styles.field}
           />
         </label>
 
-        <button type="submit">Вход</button>
-        <Link to="/register">Регистрация</Link>
+        <div className={styles.buttonBlock}>
+          <button className={styles.button} type="submit">
+            Вход
+          </button>
+          <Link className={styles.buttonLink} to="/register">
+            Регистрация
+          </Link>
+        </div>
       </form>
     </div>
   );
