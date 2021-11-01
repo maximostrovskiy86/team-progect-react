@@ -3,7 +3,7 @@ import RegistrationForm from "../../components/reagistrationForm/ReagistrationFo
 export default function RegistrationPage() {
   return (
     <>
-      <h2> RegistrationPage</h2>
+      {/* <h2> RegistrationPage</h2> */}
       <RegistrationForm />
     </>
   );

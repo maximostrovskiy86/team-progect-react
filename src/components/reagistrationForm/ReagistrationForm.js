@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/authorization/index";
 import { Link } from "react-router-dom";
+import styles from "./ReagistrationForm.module.css";
 
 export default function RegistrationForm() {
   const [username, setUsername] = useState("");
@@ -33,11 +34,10 @@ export default function RegistrationForm() {
   };
 
   return (
-    <div>
-      <h2>Registration form</h2>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <label>
-          Name
+    <div className={styles.formWrapper}>
+      <h2 className={styles.title}>Регистрация</h2>
+      <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
+        <label className={styles.formLabel}>
           <input
             type="text"
             name="username"
@@ -46,11 +46,12 @@ export default function RegistrationForm() {
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Имя может состоять только из букв латинского алфавита, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             required
+            placeholder="Имя *"
+            className={styles.field}
           />
         </label>
 
-        <label>
-          Email
+        <label className={styles.formLabel}>
           <input
             type="email"
             name="email"
@@ -59,11 +60,12 @@ export default function RegistrationForm() {
             pattern="/^(?!.*@.*@.*$)(?!.*@.*\-\-.*\..*$)(?!.*@.*\-\..*$)(?!.*@.*\-$)(.*@.+(\..{1,11})?)$/i"
             title="Email должен содержать символ @ и иметь формат example@mail.com"
             required
+            placeholder="Логин *"
+            className={styles.field}
           />
         </label>
 
-        <label>
-          Password
+        <label className={styles.formLabel}>
           <input
             type="password"
             name="password"
@@ -72,11 +74,19 @@ export default function RegistrationForm() {
             pattern="[0-9a-zA-Z!@#$%^&*]{7,}"
             title="Пароль должен состоять минимум из 7 символов, может состоять из цифр, букв латинского алфавита и спецсимволов ! @ # $ % ^ & *"
             required
+            placeholder="Пароль *"
+            className={styles.field}
           />
         </label>
 
-        <button type="submit">Регистрация</button>
-        <Link to="/login">Вход</Link>
+        <div className={styles.buttonBlock}>
+          <button className={styles.button} type="submit">
+            Вход
+          </button>
+          <Link className={styles.buttonLink} to="/register">
+            Регистрация
+          </Link>
+        </div>
       </form>
     </div>
   );
