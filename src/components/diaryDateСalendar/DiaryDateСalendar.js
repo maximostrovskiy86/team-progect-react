@@ -11,9 +11,7 @@ const DiaryDateСalendar = ({ selectDate }) => {
   const [startDate, setStartDate] = useState(new Date());
   const customeDate = moment(startDate).format("YYYY-MM-DD");
   selectDate(customeDate);
-  // selectDate(startDate);
   // const dispatch = useDispatch();
-  console.log(customeDate);
 
   // useEffect(() => {
   //     dispatch(dailyOperations.fetchDayInfo({date: customeDate}))

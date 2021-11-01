@@ -1,3 +1,13 @@
-const getDailyKcalLeft = (state) => state.user.userData.dailyRate;
-const getNotAllowedProducts = state => state.user.userData.notAllowedProducts;
-const getDate = state => state.user.date;
+const getDailyKcalLeft = (state) => state.daily.kcalLeft;
+const getKcalConsumed = state => state.daily.kcalConsumed;
+const getPercentsOfDailyRate = state => state.daily.percentsOfDailyRate;
+const getDailyRate = state => state.daily.dailyRate;
+
+const selectors = {
+    getDailyKcalLeft,
+    getKcalConsumed,
+    getPercentsOfDailyRate,
+    getDailyRate,
+}
+
+export default selectors;
