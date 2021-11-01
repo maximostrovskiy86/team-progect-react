@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import DailyCaloriesForm from "../../components/dailyCaloriesForm/DailyCaloriesForm";
 import DailyCalorieIntake from "../../components/dailyCalorieIntake/DailyCalorieIntake";
 import Modal from "../../components/modal/Modal";
+import Container from "../../components/container/Container";
 
 export default function MainPage() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,12 +21,14 @@ export default function MainPage() {
   return (
     <>
       <main className={style.main}>
-        <DailyCaloriesForm toggle={toggle} setValue={setValue} />
-        {isOpen && (
-          <Modal toggle={toggle} isRedirect={true}>
-            <DailyCalorieIntake result={result} />
-          </Modal>
-        )}
+        <Container>
+          <DailyCaloriesForm toggle={toggle} setValue={setValue} />
+          {isOpen && (
+            <Modal toggle={toggle} isRedirect={true}>
+              <DailyCalorieIntake result={result} />
+            </Modal>
+          )}
+        </Container>
       </main>
     </>
   );
