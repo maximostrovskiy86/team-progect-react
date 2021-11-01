@@ -2,21 +2,20 @@ import React from "react";
 import style from "./RightSideBar.module.scss";
 import { useSelector } from "react-redux";
 import { dailyRateSelector } from "../../redux/user";
-import {dailySelector} from "../../redux/daily";
+import { dailySelector } from "../../redux/daily";
+import Container from "../container/Container";
 
 const RightSideBar = ({ date }) => {
-
-  const notAllowedProducts = useSelector(dailyRateSelector.getNotAllowedProducts);
-
-  const dailyRate = useSelector(
-      dailySelector.getDailyRate
+  const notAllowedProducts = useSelector(
+    dailyRateSelector.getNotAllowedProducts
   );
 
-  const kcalLeft = useSelector(
-      dailySelector.getDailyKcalLeft
-  )
+  const dailyRate = useSelector(dailySelector.getDailyRate);
+
+  const kcalLeft = useSelector(dailySelector.getDailyKcalLeft);
 
   return (
+    // <Container>
     <div className={style.sideBarContainer}>
       <div className={style.characteristicBox}>
         <p className={style.sideBarTitle}>Сводка за {date}</p>
@@ -57,6 +56,7 @@ const RightSideBar = ({ date }) => {
         </p>
       </div>
     </div>
+    // </Container>
   );
 };
 

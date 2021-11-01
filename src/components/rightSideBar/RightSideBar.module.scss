@@ -1,25 +1,27 @@
 .sideBarContainer {
-  padding: 40px 5px;
+  padding: 40px 15px;
   background-color: #f0f1f3;
+  margin: 0 auto;
+  min-width: 260px;
+  @media screen and (min-width: 480px) {
+    width: 480px;
+  }
   @media screen and (min-width: 768px) {
     display: flex;
-    width: 590px;
+    justify-content: space-between;
+    width: 768px;
 
-    padding: 0;
     padding-top: 90px;
     padding-bottom: 90px;
-    margin-left: auto;
-    margin-right: auto;
     background-image: url(../../images/rightSideBar/tabl.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top 90% left 142px;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1200px) {
     display: block;
-    width: 320px;
-    //flex-basis: 40%;
-    padding: 146px 72px 160px 72px;
+    width: unset;
+    padding: 146px 60px 100px 90px;
     background-image: url(../../images/rightSideBar/desk.png);
     background-size: contain;
     background-position: top 90% left 67px;
@@ -28,14 +30,14 @@
 .characteristicBox {
   margin-left: auto;
   margin-right: auto;
-  width: 290px;
+  min-width: 260px;
   margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     margin: 0;
     width: 250px;
     margin-right: 60px;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1200px) {
     margin: 0;
     margin-bottom: 60px;
   }
@@ -108,7 +110,7 @@
 .notAllowedProductsBox {
   margin-left: auto;
   margin-right: auto;
-  width: 290px;
+  min-width: 260px;
   @media screen and (min-width: 768px) {
     margin: 0;
     width: 260px;
