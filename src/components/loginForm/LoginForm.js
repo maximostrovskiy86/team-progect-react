@@ -40,7 +40,7 @@ export default function LoginForm() {
             name="email"
             value={email}
             onChange={handleChange}
-            pattern=" /^(?!.*@.*@.*$)(?!.*@.*\-\-.*\..*$)(?!.*@.*\-\..*$)(?!.*@.*\-$)(.*@.+(\..{1,11})?)$/"
+            pattern=" /^(?!.*@.*@.*$)(?!.*@.*\-\-.*\..*$)(?!.*@.*\-\..*$)(?!.*@.*\-$)(.*@.+(\..{1,11})?)$/i"
             title="Email должен содержать символ @ и иметь формат example@mail.com"
             required
           />
