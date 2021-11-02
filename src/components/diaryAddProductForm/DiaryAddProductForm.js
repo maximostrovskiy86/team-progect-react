@@ -5,14 +5,17 @@ import {dailyOperations} from "../../redux/daily";
 import {useDispatch} from "react-redux";
 
 import axios from "axios";
+// import { useMediaQuery } from "react-responsive";
+// import Button from "../button/Button";
 axios.defaults.baseURL = "https://slimmom-backend.goit.global";
 
-const DiaryAddProductForm = ({date}) => {
-    const [value, setValue] = useState('');
+const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
+    const [value, setValue] = useState("");
     const [products, setProducts] = useState([]);
-    const [weight, setWeight] = useState('');
-    const dispatch = useDispatch()
+    const [weight, setWeight] = useState("");
+    const dispatch = useDispatch();
     // const [id, setId] = useState(null);
+    // const [isOpen, setIsOpen] = useState(false);
 
     const handleInput = (e) => {
         const {value} = e.target;
@@ -20,42 +23,42 @@ const DiaryAddProductForm = ({date}) => {
     }
 
     const getProduct = (value) => {
-        setValue(value)
+        setValue(value);
 
         if (value.length < 3) {
-            return
+            return;
         }
-        axios
-            .get(`/product?search=${value}`)
-            .then(({data}) => {
-                console.log(data)
-                setProducts(data)
-            })
+
+        axios.get(`/product?search=${value}`).then(({data}) => {
+            console.log(data);
+            setProducts(data);
+            toggle();
+        });
     };
 
     const getWeight = (e) => {
         const {value} = e.target;
         setWeight(value);
-    }
+    };
 
     const setProduct = async (e) => {
         e.preventDefault();
 
         const customeDate = moment(date).format("YYYY-MM-DD");
-        console.log(getProductIdByName())
-
+        console.log(getProductIdByName());
 
         if (getProductIdByName()) {
-            const requestData = {date: customeDate, productId: getProductIdByName()._id, weight: weight};
+            const requestData = {
+                date: customeDate,
+                productId: getProductIdByName()._id,
+                weight: weight,
+            };
             dispatch(dailyOperations.addProductByDay(requestData));
         }
-
-    }
+    };
     const getProductIdByName = () => {
-        console.log(products)
-        console.log(value)
-        return products.find(item => item.title.ru === value);
-    }
+        return products.find((item) => item.title.ru === value);
+    };
 
     return (
         <form className={style.diaryProductForm} onSubmit={setProduct}>
@@ -72,15 +75,29 @@ const DiaryAddProductForm = ({date}) => {
                 />
             </label>
             <datalist id="produsts">
-                {products.map(item => (<option key={item._id}>{item.title.ru}</option>))}
+                {products.map((item) => (
+                    <option key={item._id}>{item.title.ru}</option>
+                ))}
             </datalist>
             <label>
-                <input className={style.weightInput} type="text" value={weight} onChange={getWeight}
-                       placeholder="Граммы"/>
+                <input
+                    className={style.weightInput}
+                    type="text"
+                    value={weight}
+                    onChange={getWeight}
+                    placeholder="Граммы"
+                />
             </label>
-            <button type="submit" className={style.diaryProductFormBtn}>
-                +
-            </button>
+
+            {orMobile && !isOpen && (
+                <button
+                    type="submit"
+                    onClick={setProduct}
+                    className={style.diaryProductFormBtn}
+                >
+                    +
+                </button>
+            )}
         </form>
     );
 };
