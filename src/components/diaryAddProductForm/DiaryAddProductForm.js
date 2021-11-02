@@ -29,7 +29,6 @@ const DiaryAddProductForm = ({date}) => {
             .get(`/product?search=${value}`)
             .then(({data}) => {
                 console.log(data)
-
                 setProducts(data)
             })
     };

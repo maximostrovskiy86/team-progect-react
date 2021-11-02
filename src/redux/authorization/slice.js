@@ -1,7 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 import authOperations from "./operations";
-import { persistReducer } from "redux-persist";
+import {persistReducer} from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import {dailyOperations} from "../daily";
 
 const authPersistConfig = {
   key: "auth",
@@ -44,6 +45,11 @@ const userSlice = createSlice({
   name: "user",
   initialState: initialUserState,
   extraReducers: {
+    [dailyOperations.deleteProductByDay.fulfilled](state, action) {
+      // state.days = state.days
+      console.log("-----------", action)
+    },
+
     [authOperations.refreshUserData.fulfilled](state, action) {
       state.days = action.payload.days;
       state.userData = action.payload.userData;
@@ -51,6 +57,19 @@ const userSlice = createSlice({
       state.email = action.payload.email;
       state.id = action.payload.id;
       state.isLoggedIn = true;
+    },
+
+    [dailyOperations.rateDailyUser.fulfilled](state, action) {
+      state.userData.notAllowedProducts = action.payload.notAllowedProducts;
+      // state.days.
+    },
+
+    [dailyOperations.addProductByDay.fulfilled](state, action) {
+      state.days = action.payload.day ?
+          state.days.map(item => (item._id || item.id) === action.payload.day.id ?
+              {...action.payload.day, daySummary: action.payload.daySummary} : item)
+          :
+          [...state.days, {...action.payload.newDay, daySummary: action.payload.newSummary}]
     },
 
     [authOperations.refreshUserData.rejected](state) {
@@ -61,12 +80,12 @@ const userSlice = createSlice({
       state.isLoggedIn = false;
       state.userData = {
         weight: null,
-            height: null,
-            age: null,
-            bloodType: null,
-            desiredWeight: null,
-            dailyRate: null,
-            notAllowedProducts: [],
+        height: null,
+        age: null,
+        bloodType: null,
+        desiredWeight: null,
+        dailyRate: null,
+        notAllowedProducts: [],
       }
     },
 
@@ -227,12 +246,12 @@ const authSlice = createSlice({
 });
 
 export const persistedUserReducer = persistReducer(
-  userPersistConfig,
-  userSlice.reducer
+    userPersistConfig,
+    userSlice.reducer
 );
 export const persistedAuthReducer = persistReducer(
-  authPersistConfig,
-  authSlice.reducer
+    authPersistConfig,
+    authSlice.reducer
 );
 
 // const authRedusers = combineReducers({
