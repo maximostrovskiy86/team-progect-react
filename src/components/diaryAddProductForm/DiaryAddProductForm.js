@@ -5,7 +5,7 @@ import { dailyOperations } from "../../redux/daily";
 import { useDispatch } from "react-redux";
 
 import axios from "axios";
-import { useMediaQuery } from "react-responsive";
+// import { useMediaQuery } from "react-responsive";
 // import Button from "../button/Button";
 axios.defaults.baseURL = "https://slimmom-backend.goit.global";
 
@@ -29,7 +29,6 @@ const DiaryAddProductForm = ({ toggle, isOpen, orMobile, date, submit }) => {
     }
     axios.get(`/product?search=${value}`).then(({ data }) => {
       console.log(data);
-
       setProducts(data);
       toggle();
     });
