@@ -5,11 +5,9 @@ import DiaryAddProductForm from "../../components/diaryAddProductForm/DiaryAddPr
 import DiaryDateСalendar from "../../components/diaryDateСalendar/DiaryDateСalendar";
 import RightSideBar from "../../components/rightSideBar/RightSideBar";
 import DiaryProductsList from "../../components/diaryProductsList/DiaryProductsList";
-import {useDispatch} from "react-redux";
 // import axios from "axios";
 
 export default function DiaryPage() {
-    const dispatch = useDispatch();
     const [date, setDate] = useState(new Date());
     console.log(date);
 

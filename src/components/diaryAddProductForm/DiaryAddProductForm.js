@@ -60,7 +60,7 @@ const DiaryAddProductForm = ({ date }) => {
 
   return (
     <form className={style.diaryProductForm} onSubmit={setProduct}>
-      {/* <label>
+      <label>
         <input
           className={style.productInput}
           type="text"
@@ -87,7 +87,7 @@ const DiaryAddProductForm = ({ date }) => {
       </label>
       <button type="submit" className={style.diaryProductFormBtn}>
         +
-      </button> */}
+      </button>
     </form>
   );
 };
