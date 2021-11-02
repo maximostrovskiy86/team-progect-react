@@ -14,14 +14,19 @@
     margin: 100px auto 75px;
   }
   @media screen and (min-width: 1200px) {
+    padding-top: 134px;
     flex-basis: 60%;
     margin: 0;
+    padding: 0;
   }
 }
 
 .RightSideBarContainer {
   background-color: #f0f1f3;
   flex-basis: 40%;
+  @media screen and (min-width: 1200px) {
+    background-color: unset;
+  }
 }
 // .calculatorPageWraper {
 //   @media screen and (min-width: 1280px) {

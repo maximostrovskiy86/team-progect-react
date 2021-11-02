@@ -5,15 +5,15 @@ import Container from "../../components/container/Container";
 
 export default function CalculatorPage() {
   return (
-    <Container>
-      <div className={style.calcPageWrapper}>
-        <div className={style.calcPageContainer}>
-          <DailyCaloriesForm />
-        </div>
-        <div className={style.RightSideBarContainer}>
-          <RightSideBar />
-        </div>
+    // <Container>
+    <div className={style.calcPageWrapper}>
+      <div className={style.calcPageContainer}>
+        <DailyCaloriesForm />
       </div>
-    </Container>
+      <div className={style.RightSideBarContainer}>
+        <RightSideBar />
+      </div>
+    </div>
+    // </Container>
   );
 }
