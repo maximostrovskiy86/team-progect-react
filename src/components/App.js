@@ -46,59 +46,10 @@ export default function App() {
     isLoggedIn && dispatch(authOperations.refreshUserData());
   }, [dispatch]);
 
-<<<<<<< HEAD
-    return (
-        !isRefreshingUser && (
-            <div className={!isLoggedIn ? style.bgLogOut : style.bgLogin}>
-                <Header />
-                <Switch>
-                    <Suspense
-                        fallback={
-                            <div>
-                                loader
-                                {/* <Loader
-                  className="Loader"
-                  type="ThreeDots"
-                  color="#00BFFF"
-                  height={20}
-                  width={100}
-                  timeout={3000}
-                /> */}
-                            </div>
-                        }
-                    >
-                        <PublicRoute exact path="/">
-                            <MainPage />
-                        </PublicRoute>
-
-                        <PublicRoute path="/register" restricted>
-                            <RegistrationPage />
-                        </PublicRoute>
-
-                        <PublicRoute path="/login" restricted redirectTo="/diary">
-                            <LoginPage />
-                        </PublicRoute>
-
-                        <PrivateRoute path="/diary" restricted redirectTo="/login">
-                            <DiaryPage />
-                        </PrivateRoute>
-
-                        <PrivateRoute path="/calculator" restricted redirectTo="/login">
-                            <CalculatorPage />
-                        </PrivateRoute>
-                        <Redirect to="/" />
-                    </Suspense>
-                </Switch>
-            </div>
-        )
-    );
-}
-=======
   return (
     !isRefreshingUser && (
       <div className={!isLoggedIn ? style.bgLogOut : style.bgLogin}>
         <Header />
-        <Container>
           <Switch>
             <Suspense fallback={<AppLoader />}>
               <PublicRoute exact path="/">
@@ -123,9 +74,7 @@ export default function App() {
               {/*<Redirect to="/"/>*/}
             </Suspense>
           </Switch>
-        </Container>
       </div>
     )
   );
 }
->>>>>>> a76c1687a5a0b5c0ef1306f863b69e67b9bae3cf
