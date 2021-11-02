@@ -1,25 +1,14 @@
-import {useEffect, useState} from "react";
+import { useState} from "react";
 import style from "./DiaryPage.module.scss";
-import {dailyOperations} from "../../redux/daily";
+// import {dailyOperations} from "../../redux/daily";
 import DiaryAddProductForm from "../../components/diaryAddProductForm/DiaryAddProductForm";
 import DiaryDateСalendar from "../../components/diaryDateСalendar/DiaryDateСalendar";
 import RightSideBar from "../../components/rightSideBar/RightSideBar";
 import DiaryProductsList from "../../components/diaryProductsList/DiaryProductsList";
-// import axios from "axios";
 
 export default function DiaryPage() {
     const [date, setDate] = useState(new Date());
     console.log(date);
-
-    // useEffect(() => {
-    //   dispatch(dailyOperations.fetchDayInfo({ date: date }));
-    //   // axios
-    //   //     .post('https://slimmom-backend.goit.global/day/info', {date: date})
-    //   //     .then((response) => {
-    //   //         console.log(response.data);
-    //   //         console.log('Date------------------------')
-    //   //     })
-    // }, [date]);
 
     return (
         <div className={style.diaryPageWraper}>

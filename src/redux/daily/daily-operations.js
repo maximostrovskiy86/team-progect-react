@@ -60,6 +60,23 @@ const addProductByDay = createAsyncThunk(
         try {
             token.set(accessToken);
             const {data} = await axios.post("/day", credentials);
+            return data;
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+)
+
+const deleteProductByDay = createAsyncThunk(
+    "daily/day",
+    async (credentials, {rejectWithValue, getState}) => {
+        console.log(credentials)
+        const state = getState();
+        const accessToken = state.auth.accessToken;
+        try {
+            token.set(accessToken);
+            const {data} = await axios.delete("/day", {data: {...credentials}});
+            // axios.delete(URL, {data: payload}, header);
             console.log(data)
             return data;
         } catch (error) {
@@ -68,10 +85,12 @@ const addProductByDay = createAsyncThunk(
     }
 )
 
+
 const operations = {
     fetchDayInfo,
     rateDailyUser,
     addProductByDay,
+    deleteProductByDay,
 }
 
 export default operations;

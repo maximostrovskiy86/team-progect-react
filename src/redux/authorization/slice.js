@@ -45,6 +45,11 @@ const userSlice = createSlice({
     name: "user",
     initialState: initialUserState,
     extraReducers: {
+        [dailyOperations.deleteProductByDay.fulfilled](state, action) {
+            state.days = state.days
+            console.log("-----------", action)
+        },
+
         [authOperations.refreshUserData.fulfilled](state, action) {
             state.days = action.payload.days;
             state.userData = action.payload.userData;
