@@ -10,42 +10,40 @@ const dailyPersistConfig = {
 };
 
 const initialDailyState = {
-    date: null,
-    kcalLeft: null,
-    kcalConsumed: null,
-    percentsOfDailyRate: null,
-    dailyRate: null,
-    notAllowedProducts: [],
-    eatenProducts: {},
+    eatenProduct: {},
+    day: {
+        date: null,
+        kcalLeft: null,
+        kcalConsumed: null,
+        percentsOfDailyRate: null,
+        dailyRate: null,
+        // notAllowedProducts: [],
+        eatenProducts: [],
+    }
 };
-
-// const initialDate = {
-//
-// }
-
 
 const dailySlice = createSlice({
     name: "daily",
     initialState: initialDailyState,
     extraReducers: {
         [dailyOperations.addProductByDay.fulfilled](state, action) {
-            state.eatenProducts = action.payload.eatenProduct
+            state.eatenProduct = action.payload.eatenProduct;
+            state.day.eatenProducts = action.payload.eatenProduct;
         },
 
-
         [dailyOperations.rateDailyUser.fulfilled](state, action) {
-            state.date = action.payload.summaries.date;
-            state.kcalLeft = action.payload.summaries.kcalLeft;
-            state.kcalConsumed = action.payload.summaries.kcalConsumed;
-            state.percentsOfDailyRate = action.payload.summaries.percentsOfDailyRate;
-            state.dailyRate = action.payload.dailyRate;
-            state.notAllowedProducts = action.payload.notAllowedProducts;
+            state.day.date = action.payload.summaries.date;
+            state.day.kcalLeft = action.payload.summaries.kcalLeft;
+            state.day.kcalConsumed = action.payload.summaries.kcalConsumed;
+            state.day.percentsOfDailyRate = action.payload.summaries.percentsOfDailyRate;
+            state.day.dailyRate = action.payload.dailyRate;
+            state.day.notAllowedProducts = action.payload.notAllowedProducts;
+            // state.days.
         },
         // [authOperations.rateDailyUser.fulfilled](state, action) {
         //   state.userData.dailyRate = action.payload.dailyRate;
         //   state.todaySummary = action.payload.summaries;
         //   state.userData.notAllowedProducts = action.payload.notAllowedProducts;
-
 
         [dailyOperations.fetchDayInfo.fulfilled](state, action) {
             state.date = action.payload.date;
@@ -54,6 +52,7 @@ const dailySlice = createSlice({
             state.percentsOfDailyRate = action.payload.percentsOfDailyRate;
             state.dailyRate = action.payload.dailyRate;
         },
+
         [authOperations.logOut.fulfilled](state) {
             state.date = null;
             state.kcalLeft = null;
@@ -74,7 +73,6 @@ const dailySlice = createSlice({
         },
     },
 });
-
 
 export const persistedDailyReducer = persistReducer(
     dailyPersistConfig,

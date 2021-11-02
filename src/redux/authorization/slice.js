@@ -18,26 +18,26 @@ const initialState = {
   refreshToken: null,
   sid: null,
   error: null,
-  // isLoggedIn: false,
-  // todaySummary: null,
-  // userData: null,
-  // user: { username: null, email: null, id: null },
 };
 
 const initialUserState = {
   username: null,
   email: null,
   id: null,
-  todaySummary: null,
-  userData: null,
+  days: [],
+  userData: {
+    weight: null,
+    height: null,
+    age: null,
+    bloodType: null,
+    desiredWeight: null,
+    dailyRate: null,
+    notAllowedProducts: [],
+  },
+
   isLoggedIn: false,
-  date: null,
+  date: new Date(),
   error: null,
-  // notAllowedProducts: [],
-  // date: "2020-12-31",
-  // kcalLeft: 0,
-  // kcalConsumed: 0,
-  // percentsOfDailyRate: 0,
 };
 
 const userSlice = createSlice({
@@ -45,21 +45,75 @@ const userSlice = createSlice({
   initialState: initialUserState,
   extraReducers: {
     [authOperations.refreshUserData.fulfilled](state, action) {
-      state.todaySummary = action.payload.days.daySummary;
-      state.date = action.payload.days.date;
+      state.days = action.payload.days;
       state.userData = action.payload.userData;
       state.username = action.payload.username;
       state.email = action.payload.email;
       state.id = action.payload.id;
       state.isLoggedIn = true;
     },
+
     [authOperations.refreshUserData.rejected](state) {
+      state.days = [];
+      state.username = null;
+      state.email = null;
+      state.id = null;
+      state.isLoggedIn = false;
+      state.userData = {
+        weight: null,
+            height: null,
+            age: null,
+            bloodType: null,
+            desiredWeight: null,
+            dailyRate: null,
+            notAllowedProducts: [],
+      }
+    },
+
+    [authOperations.logOut.fulfilled](state) {
+      state.days = [];
+      state.username = null;
+      state.email = null;
+      state.id = null;
+      state.isLoggedIn = false;
+      state.userData = {
+        weight: null,
+        height: null,
+        age: null,
+        bloodType: null,
+        desiredWeight: null,
+        dailyRate: null,
+        notAllowedProducts: [],
+      }
+    },
+    [authOperations.logOut.rejected](state) {
+      state.days = [];
+      state.username = null;
+      state.email = null;
+      state.id = null;
+      state.isLoggedIn = false;
+      state.userData = {
+        weight: null,
+        height: null,
+        age: null,
+        bloodType: null,
+        desiredWeight: null,
+        dailyRate: null,
+        notAllowedProducts: [],
+      }
+    },
+
+    [authOperations.refreshAccessToken.rejected](state) {
       state.username = null;
       state.email = null;
       state.id = null;
       state.todaySummary = null;
       state.userData = null;
       state.isLoggedIn = false;
+      state.date = null;
+    },
+    [authOperations.refreshAccessToken.fulfilled](state) {
+      state.isLoggedIn = true;
     },
 
     [authOperations.register.fulfilled](state, action) {
@@ -80,48 +134,6 @@ const userSlice = createSlice({
       state.id = action.payload.user.id;
       state.isLoggedIn = true;
     },
-    [authOperations.logOut.fulfilled](state) {
-      state.username = null;
-      state.email = null;
-      state.id = null;
-      state.todaySummary = null;
-      state.userData = null;
-      state.isLoggedIn = false;
-      state.date = null;
-    },
-    [authOperations.logOut.rejected](state) {
-      state.username = null;
-      state.email = null;
-      state.id = null;
-      state.todaySummary = null;
-      state.userData = null;
-      state.isLoggedIn = false;
-      state.date = null;
-    },
-    [authOperations.refreshAccessToken.rejected](state) {
-      state.username = null;
-      state.email = null;
-      state.id = null;
-      state.todaySummary = null;
-      state.userData = null;
-      state.isLoggedIn = false;
-      state.date = null;
-    },
-    [authOperations.refreshAccessToken.fulfilled](state) {
-      state.isLoggedIn = true;
-    },
-    // [authOperations.rateDailyUser.fulfilled](state, action) {
-    //   state.userData.dailyRate = action.payload.dailyRate;
-    //   state.todaySummary = action.payload.summaries;
-    //   state.userData.notAllowedProducts = action.payload.notAllowedProducts;
-    //
-    //
-    //   // state.userData = action.payload.userData;
-    //   // state.username = action.payload.username;
-    //   // state.email = action.payload.email;
-    //   // state.id  = action.payload.id;
-    //   // state.isLoggedIn = true;
-    // },
   },
 });
 
