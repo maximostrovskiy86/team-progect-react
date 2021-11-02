@@ -60,7 +60,7 @@ export default function DiaryPage() {
                         isOpen={isOpen}
                         toggle={toggle}
                     />
-                    <Button onClick={() => console.log("Add product")} text="Добавить" />
+                    <Button onClick={() => console.log("Add product")} text="Добавить"/>
                 </Modal>
             )}
         </div>
