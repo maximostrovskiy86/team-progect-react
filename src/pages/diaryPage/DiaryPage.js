@@ -56,7 +56,6 @@ export default function DiaryPage() {
           )}
         </div>
       </div>
-
       <div className={style.RightSideBarContainer}>
         <RightSideBar date={date} />
       </div>

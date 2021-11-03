@@ -43,9 +43,7 @@ const DiaryAddProductForm = ({ toggle, isOpen, date, submit }) => {
 
   const setProduct = async (e) => {
     e.preventDefault();
-
     const customeDate = moment(date).format("YYYY-MM-DD");
-
     if (getProductIdByName()) {
       const requestData = {
         date: customeDate,
@@ -60,7 +58,7 @@ const DiaryAddProductForm = ({ toggle, isOpen, date, submit }) => {
   const getProductIdByName = () => {
     return products.find((item) => item.title.ru === value);
   };
-  // const orMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
   const orDesk = useMediaQuery({ query: "(min-width: 768px)" });
   return (
     <form className={style.diaryProductForm} onSubmit={setProduct}>
