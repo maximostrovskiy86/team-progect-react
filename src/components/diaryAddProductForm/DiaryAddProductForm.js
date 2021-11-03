@@ -95,8 +95,9 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
       {!orDesk && isOpen && <Button onClick={setProduct} text="Добавить" />}
       {orDesk && !isOpen && (
         <button
-            disabled={!isWeight}
-            className={isWeight ? style.active : style.disabled}
+            // disabled={!isWeight}
+            // className={`${style.diaryProductFormBtn} ${isWeight ? style.active : style.disabled}`}
+            className={style.diaryProductFormBtn}
             type="submit"
           onClick={setProduct}
         >

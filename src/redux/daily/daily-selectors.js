@@ -3,7 +3,7 @@ const getKcalConsumed = state => state.daily.kcalConsumed;
 const getPercentsOfDailyRate = state => state.daily.percentsOfDailyRate;
 const getDailyRate = state => state.daily.dailyRate;
 const getDailyRateByDay = (state, day) => state.user.days.find(item => item.date === day);
-const getWeight = state => state.daily.dailyRate;
+const getWeight = state => state.user.userData.dailyRate;
 const getRightSideBarRateByDay = (state, day) => state.user.days.length ?
     state.user.days.find(item => item.date === day)
     :
