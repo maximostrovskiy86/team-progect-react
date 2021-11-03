@@ -53,9 +53,9 @@ const Header = (props) => {
               <AuthNavigation />
             )}
           </div>
-          {isLoggedIn && width < 768 && <Menu />}
           {isOpen && width < 1050 && <NavModale toggle={toggle} />}
         </Container>
+        {isLoggedIn && width < 768 && <Menu />}
       </header>
     </>
   );

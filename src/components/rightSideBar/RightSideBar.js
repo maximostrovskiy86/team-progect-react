@@ -13,7 +13,7 @@ const RightSideBar = ({date}) => {
     // const date = useSelector(dailySelector.getDate);
     const day = useSelector(state => dailySelector.getRightSideBarRateByDay(state, customeDate));
     console.log(day)
-    
+
     const getInfo = (key) => {
         return day ? day.daySummary[key] : 0;
     }
