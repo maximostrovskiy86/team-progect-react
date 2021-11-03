@@ -1,112 +1,111 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import style from "./DiaryAddProductForm.module.scss";
 import moment from "moment";
-import {dailyOperations} from "../../redux/daily";
-import {useDispatch} from "react-redux";
+import { dailyOperations } from "../../redux/daily";
+import { useDispatch } from "react-redux";
 
 import axios from "axios";
 // import { useMediaQuery } from "react-responsive";
 // import Button from "../button/Button";
 axios.defaults.baseURL = "https://slimmom-backend.goit.global";
 
-const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
-    const [value, setValue] = useState("");
-    const [products, setProducts] = useState([]);
-    const [weight, setWeight] = useState("");
-    const dispatch = useDispatch();
-    // const [id, setId] = useState(null);
-    // const [isOpen, setIsOpen] = useState(false);
+const DiaryAddProductForm = ({ toggle, isOpen, orMobile, date, submit }) => {
+  const [value, setValue] = useState("");
+  const [products, setProducts] = useState([]);
+  const [weight, setWeight] = useState("");
+  const dispatch = useDispatch();
+  // const [id, setId] = useState(null);
+  // const [isOpen, setIsOpen] = useState(false);
 
-    const handleInput = (e) => {
-        const {value} = e.target;
-        getProduct(value)
+  const handleInput = (e) => {
+    const { value } = e.target;
+    getProduct(value);
+  };
+
+  const getProduct = (value) => {
+    setValue(value);
+
+    if (value.length < 3) {
+      return;
     }
 
-    const getProduct = (value) => {
-        setValue(value);
+    axios.get(`/product?search=${value}`).then(({ data }) => {
+      setProducts(data);
+      // toggle();
+    });
+  };
 
-        if (value.length < 3) {
-            return;
-        }
+  const getWeight = (e) => {
+    const { value } = e.target;
+    setWeight(value);
+  };
 
-        axios.get(`/product?search=${value}`).then(({data}) => {
-            setProducts(data);
-            // toggle();
-        });
-    };
+  const setProduct = async (e) => {
+    e.preventDefault();
 
-    const getWeight = (e) => {
-        const {value} = e.target;
-        setWeight(value);
-    };
+    const customeDate = moment(date).format("YYYY-MM-DD");
 
-    const setProduct = async (e) => {
-        e.preventDefault();
+    if (getProductIdByName()) {
+      const requestData = {
+        date: customeDate,
+        productId: getProductIdByName()._id,
+        weight: weight,
+      };
+      dispatch(dailyOperations.addProductByDay(requestData));
+    }
+  };
+  const getProductIdByName = () => {
+    return products.find((item) => item.title.ru === value);
+  };
 
-        const customeDate = moment(date).format("YYYY-MM-DD");
+  return (
+    <form className={style.diaryProductForm} onSubmit={setProduct}>
+      {/*<form className={style.diaryProductForm}>*/}
+      <label>
+        <input
+          className={style.productInput}
+          type="text"
+          placeholder="Введите название продукта"
+          list="produsts"
+          value={value}
+          onChange={handleInput}
+          // id="myBrowser"
+        />
+      </label>
+      <datalist id="produsts">
+        {products.map((item) => (
+          <option key={item._id}>{item.title.ru}</option>
+        ))}
+      </datalist>
+      <label>
+        <input
+          className={style.weightInput}
+          type="text"
+          value={weight}
+          onChange={getWeight}
+          placeholder="Граммы"
+        />
+      </label>
 
+      <button
+        type="submit"
+        onClick={setProduct}
+        className={style.diaryProductFormBtn}
+      >
+        +
+      </button>
 
-        if (getProductIdByName()) {
-            const requestData = {
-                date: customeDate,
-                productId: getProductIdByName()._id,
-                weight: weight,
-            };
-            dispatch(dailyOperations.addProductByDay(requestData));
-        }
-    };
-    const getProductIdByName = () => {
-        return products.find((item) => item.title.ru === value);
-    };
-
-    return (
-        <form className={style.diaryProductForm} onSubmit={setProduct}>
-            {/*<form className={style.diaryProductForm}>*/}
-            <label>
-                <input
-                    className={style.productInput}
-                    type="text"
-                    placeholder="Введите название продукта"
-                    list="produsts"
-                    value={value}
-                    onChange={handleInput}
-                    // id="myBrowser"
-                />
-            </label>
-            <datalist id="produsts">
-                {products.map((item) => (
-                    <option key={item._id}>{item.title.ru}</option>
-                ))}
-            </datalist>
-            <label>
-                <input
-                    className={style.weightInput}
-                    type="text"
-                    value={weight}
-                    onChange={getWeight}
-                    placeholder="Граммы"
-                />
-            </label>
-
-            <button
-                type="submit"
-                onClick={setProduct}
-                className={style.diaryProductFormBtn}
-            >
-                +
-            </button>
-
-            {/*{orMobile && !isOpen && (*/}
-            {/*    <button*/}
-            {/*        type="submit"*/}
-            {/*        onClick={setProduct}*/}
-            {/*        className={style.diaryProductFormBtn}*/}
-            {/*    >*/}
-            {/*        +*/}
-            {/*    </button>*/}
-            {/*)}*/}
-        </form>
-    );
+      {/*{orMobile && !isOpen && (*/}
+      {/*    <button*/}
+      {/*        type="submit"*/}
+      {/*        onClick={setProduct}*/}
+      {/*        className={style.diaryProductFormBtn}*/}
+      {/*    >*/}
+      {/*        +*/}
+      {/*    </button>*/}
+      {/*)}*/}
+    </form>
+  );
 };
 
 export default DiaryAddProductForm;
