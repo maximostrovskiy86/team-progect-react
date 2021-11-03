@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import style from "./DiaryAddProductForm.module.scss";
 import moment from "moment";
 import {dailyOperations} from "../../redux/daily";
-import {useDispatch} from "react-redux";
+import {authSelectors} from "../../redux/authorization";
+import {useDispatch, useSelector} from "react-redux";
 
 import axios from "axios";
 // import { useMediaQuery } from "react-responsive";
@@ -14,6 +15,7 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
     const [products, setProducts] = useState([]);
     const [weight, setWeight] = useState("");
     const dispatch = useDispatch();
+    const isWeight = useSelector(authSelectors.getWeight);
     // const [id, setId] = useState(null);
     // const [isOpen, setIsOpen] = useState(false);
 
@@ -70,7 +72,6 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
                     list="produsts"
                     value={value}
                     onChange={handleInput}
-                    // id="myBrowser"
                 />
             </label>
             <datalist id="produsts">
@@ -88,23 +89,16 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
                 />
             </label>
 
+
             <button
+
+                disabled={!isWeight}
                 type="submit"
                 onClick={setProduct}
                 className={style.diaryProductFormBtn}
             >
                 +
             </button>
-
-            {/*{orMobile && !isOpen && (*/}
-            {/*    <button*/}
-            {/*        type="submit"*/}
-            {/*        onClick={setProduct}*/}
-            {/*        className={style.diaryProductFormBtn}*/}
-            {/*    >*/}
-            {/*        +*/}
-            {/*    </button>*/}
-            {/*)}*/}
         </form>
     );
 };
