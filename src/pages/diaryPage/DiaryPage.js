@@ -5,7 +5,7 @@ import DiaryDateСalendar from "../../components/diaryDateСalendar/DiaryDateСa
 import RightSideBar from "../../components/rightSideBar/RightSideBar";
 // import { useDispatch } from "react-redux";
 import Modal from "../../components/modal/Modal";
-import Button from "../../components/button/Button";
+// import Button from "../../components/button/Button";
 import { useMediaQuery } from "react-responsive";
 import GoBack from "../../components/goBack/GoBack";
 import Close from "../../components/closeIcon/Close";
@@ -14,14 +14,12 @@ import DiaryProductsList from "../../components/diaryProductsList/DiaryProductsL
 
 export default function DiaryPage() {
   const [date, setDate] = useState(new Date());
-
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen((prev) => !prev);
   };
 
   const orMobile = useMediaQuery({ query: "(max-width: 768px)" });
-  // const orDesk = useMediaQuery({ query: "(max-width: 1024px)" });
 
   return (
     <div className={style.diaryPageWraper}>
@@ -42,10 +40,10 @@ export default function DiaryPage() {
           {isOpen && orMobile && (
             <Modal toggle={toggle}>
               {orMobile ? (
-                <>
+                <div className={style.menuBack}>
                   <GoBack onClick={toggle} />
                   <Menu />
-                </>
+                </div>
               ) : (
                 <Close toggle={toggle} />
               )}
@@ -53,10 +51,6 @@ export default function DiaryPage() {
                 orMobile={orMobile}
                 isOpen={isOpen}
                 toggle={toggle}
-              />
-              <Button
-                onClick={() => console.log("Add product")}
-                text="Добавить"
               />
             </Modal>
           )}

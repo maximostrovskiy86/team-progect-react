@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 // import { useMediaQuery } from "react-responsive";
-// import Button from "../button/Button";
+import Button from "../button/Button";
 axios.defaults.baseURL = "https://slimmom-backend.goit.global";
 
 const DiaryAddProductForm = ({ toggle, isOpen, date, submit }) => {
@@ -52,8 +52,10 @@ const DiaryAddProductForm = ({ toggle, isOpen, date, submit }) => {
         productId: getProductIdByName()._id,
         weight: weight,
       };
+
       dispatch(dailyOperations.addProductByDay(requestData));
     }
+    isOpen && toggle();
   };
   const getProductIdByName = () => {
     return products.find((item) => item.title.ru === value);
@@ -88,15 +90,7 @@ const DiaryAddProductForm = ({ toggle, isOpen, date, submit }) => {
           placeholder="Граммы"
         />
       </label>
-      {/* 
-      <button
-        type="submit"
-        onClick={setProduct}
-        className={style.diaryProductFormBtn}
-      >
-        +
-      </button> */}
-
+      {!orDesk && isOpen && <Button onClick={setProduct} text="Добавить" />}
       {orDesk && !isOpen && (
         <button
           type="submit"
