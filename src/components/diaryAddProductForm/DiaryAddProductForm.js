@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import style from "./DiaryAddProductForm.module.scss";
 import moment from "moment";
-import {dailyOperations} from "../../redux/daily";
+import {dailyOperations, dailySelector} from "../../redux/daily";
 import {authSelectors} from "../../redux/authorization";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -15,9 +15,8 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
     const [products, setProducts] = useState([]);
     const [weight, setWeight] = useState("");
     const dispatch = useDispatch();
-    const isWeight = useSelector(authSelectors.getWeight);
-    // const [id, setId] = useState(null);
-    // const [isOpen, setIsOpen] = useState(false);
+    const isWeight = useSelector(dailySelector.getWeight);
+    console.log(isWeight)
 
     const handleInput = (e) => {
         const {value} = e.target;
@@ -88,10 +87,7 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
                     placeholder="Граммы"
                 />
             </label>
-
-
             <button
-
                 disabled={!isWeight}
                 type="submit"
                 onClick={setProduct}

@@ -31,10 +31,7 @@ const RightSideBar = ({date}) => {
                         <p className={style.sideBarItem_text}>
                             Осталось
                             <span className={style.sideBarItem_span}>
-                {getInfo("kcalLeft") ||
-                getInfo("dailyRate") ||
-                0}{" "}
-                                ккал
+                {getInfo("kcalLeft") || getInfo("dailyRate") || 0} ккал
               </span>
                         </p>
                     </li>
