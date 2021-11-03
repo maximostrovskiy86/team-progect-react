@@ -39,9 +39,9 @@ export default function DiaryPage() {
           {/*    +*/}
           {/*</button>*/}
           {/* )} */}
-          {isOpen && orMobile && (
+          {!isOpen && orMobile && (
             <Modal toggle={toggle}>
-              {orMobile ? (
+              {!orMobile ? (
                 <>
                   <GoBack onClick={toggle} />
                   <Menu />
