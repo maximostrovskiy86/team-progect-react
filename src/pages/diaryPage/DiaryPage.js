@@ -30,18 +30,18 @@ export default function DiaryPage() {
           <DiaryDateСalendar date={date} selectDate={setDate} />
           {!orMobile && <DiaryAddProductForm date={date} />}
           <DiaryProductsList date={date} />
-          {/* {!isOpen && ( */}
-          {/*<button*/}
-          {/*    type="submit"*/}
-          {/*    onClick={toggle}*/}
-          {/*    className={style.diaryProductFormBtn}*/}
-          {/*>*/}
-          {/*    +*/}
-          {/*</button>*/}
-          {/* )} */}
           {!isOpen && orMobile && (
+            <button
+              type="submit"
+              onClick={toggle}
+              className={style.diaryProductFormBtn}
+            >
+              +
+            </button>
+          )}
+          {isOpen && orMobile && (
             <Modal toggle={toggle}>
-              {!orMobile ? (
+              {orMobile ? (
                 <>
                   <GoBack onClick={toggle} />
                   <Menu />
