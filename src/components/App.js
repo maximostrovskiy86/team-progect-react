@@ -67,8 +67,7 @@ export default function App() {
             <PrivateRoute path="/calculator" restricted redirectTo="/login">
               <CalculatorPage />
             </PrivateRoute>
-            isLoggedIn ? (<Redirect to="/calculator" />) : (
-            <Redirect to="/" />)
+            {isLoggedIn ? <Redirect to="/calculator" /> : <Redirect to="/" />}
           </Suspense>
         </Switch>
       </div>
