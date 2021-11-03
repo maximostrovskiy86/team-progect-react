@@ -50,30 +50,30 @@ export default function App() {
     !isRefreshingUser && (
       <div className={!isLoggedIn ? style.bgLogOut : style.bgLogin}>
         <Header />
-          <Switch>
-            <Suspense fallback={<AppLoader />}>
-              <PublicRoute exact path="/">
-                <MainPage />
-              </PublicRoute>
+        <Switch>
+          <Suspense fallback={<AppLoader />}>
+            <PublicRoute exact path="/">
+              <MainPage />
+            </PublicRoute>
 
-              <PublicRoute path="/register" restricted redirectTo="/calculator">
-                <RegistrationPage />
-              </PublicRoute>
+            <PublicRoute path="/register" restricted redirectTo="/calculator">
+              <RegistrationPage />
+            </PublicRoute>
 
-              <PublicRoute path="/login" restricted redirectTo="/diary">
-                <LoginPage />
-              </PublicRoute>
+            <PublicRoute path="/login" restricted redirectTo="/diary">
+              <LoginPage />
+            </PublicRoute>
 
-              <PrivateRoute path="/diary" restricted redirectTo="/login">
-                <DiaryPage />
-              </PrivateRoute>
+            <PrivateRoute path="/diary" restricted redirectTo="/login">
+              <DiaryPage />
+            </PrivateRoute>
 
-              <PrivateRoute path="/calculator" restricted redirectTo="/login">
-                <CalculatorPage />
-              </PrivateRoute>
-              {/*<Redirect to="/"/>*/}
-            </Suspense>
-          </Switch>
+            <PrivateRoute path="/calculator" restricted redirectTo="/login">
+              <CalculatorPage />
+            </PrivateRoute>
+            {/* <Redirect to="/" /> */}
+          </Suspense>
+        </Switch>
       </div>
     )
   );
