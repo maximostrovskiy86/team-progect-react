@@ -3,6 +3,7 @@ import style from "./DiaryAddProductForm.module.scss";
 import moment from "moment";
 import { dailyOperations } from "../../redux/daily";
 import { useDispatch } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 
 import axios from "axios";
 // import { useMediaQuery } from "react-responsive";
@@ -57,6 +58,7 @@ const DiaryAddProductForm = ({ toggle, isOpen, orMobile, date, submit }) => {
   const getProductIdByName = () => {
     return products.find((item) => item.title.ru === value);
   };
+  const orDesk = useMediaQuery({ query: "(min-width: 768px)" });
 
   return (
     <form className={style.diaryProductForm} onSubmit={setProduct}>
@@ -87,7 +89,7 @@ const DiaryAddProductForm = ({ toggle, isOpen, orMobile, date, submit }) => {
         />
       </label>
 
-      {orMobile && !isOpen && (
+      {orDesk && !isOpen && (
         <button
           type="submit"
           onClick={setProduct}

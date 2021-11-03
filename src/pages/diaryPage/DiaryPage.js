@@ -21,7 +21,7 @@ export default function DiaryPage() {
   };
 
   const orMobile = useMediaQuery({ query: "(max-width: 768px)" });
-  // const orDesk = useMediaQuery({ query: "(max-width: 1024px)" });
+  // const orDesk = useMediaQuery({ query: "(min-width: 768px)" });
 
   return (
     <div className={style.diaryPageWraper}>
@@ -32,22 +32,22 @@ export default function DiaryPage() {
       <div className={style.RightSideBarContainer}>
         <RightSideBar date={date} />
       </div>
-      {/* {!isOpen && ( */}
-      <button
-        type="submit"
-        onClick={toggle}
-        className={style.diaryProductFormBtn}
-      >
-        +
-      </button>
-      {/* )} */}
+      {!isOpen && orMobile && (
+        <button
+          type="submit"
+          onClick={toggle}
+          className={style.diaryProductFormBtnAdd}
+        >
+          +
+        </button>
+      )}
       {isOpen && orMobile && (
         <Modal toggle={toggle}>
           {orMobile ? (
-            <>
+            <div className={style.menuBack}>
               <GoBack onClick={toggle} />
               <Menu />
-            </>
+            </div>
           ) : (
             <Close toggle={toggle} />
           )}
