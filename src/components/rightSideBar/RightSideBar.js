@@ -1,11 +1,11 @@
 import React from "react";
 import style from "./RightSideBar.module.scss";
-import { useSelector } from "react-redux";
-import { dailySelector } from "../../redux/daily";
-import { authSelectors } from "../../redux/authorization";
+import {useSelector} from "react-redux";
+import {dailySelector} from "../../redux/daily";
+import {authSelectors} from "../../redux/authorization";
 import moment from "moment";
 
-const RightSideBar = ({ date }) => {
+const RightSideBar = ({date}) => {
     const customeDate = moment(date).format("YYYY-MM-DD");
     const notAllowedProducts = useSelector(authSelectors.getNotAllowedProducts);
     // const dailyRate = useSelector(dailySelector.getDailyRate);
@@ -17,7 +17,7 @@ const RightSideBar = ({ date }) => {
     console.log(day);
 
     const getInfo = (key) => {
-        return day ? day.daySummary[key] : 0;
+        return day ? day.daySummary[key]?.toFixed() : 0;
     };
 
     return (
@@ -31,8 +31,8 @@ const RightSideBar = ({ date }) => {
                         <p className={style.sideBarItem_text}>
                             Осталось
                             <span className={style.sideBarItem_span}>
-                {Number(getInfo("kcalLeft")).toFixed() ||
-                Number(getInfo("dailyRate")).toFixed() ||
+                {getInfo("kcalLeft") ||
+                getInfo("dailyRate") ||
                 0}{" "}
                                 ккал
               </span>
@@ -42,7 +42,7 @@ const RightSideBar = ({ date }) => {
                         <p className={style.sideBarItem_text}>
                             Употреблено
                             <span className={style.sideBarItem_span}>
-                {Number(getInfo("kcalConsumed")).toFixed() || 0} ккал
+                {getInfo("kcalConsumed") || 0} ккал
               </span>
                         </p>
                     </li>
@@ -50,7 +50,7 @@ const RightSideBar = ({ date }) => {
                         <p className={style.sideBarItem_text}>
                             Дневная норма
                             <span className={style.sideBarItem_span}>
-                {Number(getInfo("dailyRate")).toFixed() || 0} ккал
+                {getInfo("dailyRate") || 0} ккал
               </span>
                         </p>
                     </li>
@@ -58,7 +58,7 @@ const RightSideBar = ({ date }) => {
                         <p className={style.sideBarItem_text}>
                             % от нормы
                             <span className={style.sideBarItem_span}>
-                {Number(getInfo("percentsOfDailyRate")).toFixed() || 0} %
+                {getInfo("percentsOfDailyRate") || 0} %
               </span>
                         </p>
                     </li>
