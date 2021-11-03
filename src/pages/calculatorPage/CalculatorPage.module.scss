@@ -5,8 +5,14 @@
   }
 }
 .calcPageContainer {
-  width: 250px;
+  min-width: 250px;
+  padding-left: 15px;
+  padding-right: 15px;
   margin: 40px auto 60px;
+  @media screen and (min-width: 480px) {
+    min-width: unset;
+    width: 480px;
+  }
   @media screen and (min-width: 768px) {
     width: 768px;
     padding-left: 15px;

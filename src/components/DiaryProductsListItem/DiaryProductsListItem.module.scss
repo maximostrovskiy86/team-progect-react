@@ -1,5 +1,72 @@
 .itemProduct {
-    display: flex;
-    justify-content: center;
-    margin-top: 7px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  // justify-content: center;
+  // margin-top: 7px;
+}
+.itemElement {
+  margin: 0;
+  padding-bottom: 5px;
+}
+.itemTitle {
+  display: inline-block;
+  width: 138px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #212121;
+
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  @media screen and (min-width: 480px) {
+    margin-right: 40px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 290px;
+  }
+}
+
+.itemWeight {
+  display: inline-block;
+  width: 60px;
+  text-align: right;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #212121;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  @media screen and (min-width: 480px) {
+    width: 80px;
+    margin-right: 20px;
+  }
+  @media screen and (min-width: 768px) {
+  }
+}
+
+.itemKcal {
+  display: inline-block;
+  width: 60px;
+
+  text-align: right;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #212121;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  @media screen and (min-width: 480px) {
+    width: 100px;
+    margin-right: 20px;
+  }
+}
+
+.deleteBtn {
+  padding: 0;
+  border: none;
+  background-color: inherit;
+  font-size: 17px;
 }
