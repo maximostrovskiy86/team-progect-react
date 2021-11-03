@@ -44,36 +44,33 @@ export default function App() {
 
   useEffect(() => {
     isLoggedIn && dispatch(authOperations.refreshUserData());
-  }, [dispatch]);
+  }, [dispatch, isLoggedIn]);
 
   return (
     !isRefreshingUser && (
       <div className={!isLoggedIn ? style.bgLogOut : style.bgLogin}>
         <Header />
-          <Switch>
-            <Suspense fallback={<AppLoader />}>
-              <PublicRoute exact path="/">
-                <MainPage />
-              </PublicRoute>
-
-              <PublicRoute path="/register" restricted redirectTo="/calculator">
-                <RegistrationPage />
-              </PublicRoute>
-
-              <PublicRoute path="/login" restricted redirectTo="/diary">
-                <LoginPage />
-              </PublicRoute>
-
-              <PrivateRoute path="/diary" restricted redirectTo="/login">
-                <DiaryPage />
-              </PrivateRoute>
-
-              <PrivateRoute path="/calculator" restricted redirectTo="/login">
-                <CalculatorPage />
-              </PrivateRoute>
-              {/*<Redirect to="/"/>*/}
-            </Suspense>
-          </Switch>
+        <Switch>
+          <Suspense fallback={<AppLoader />}>
+            <PublicRoute exact path="/">
+              <MainPage />
+            </PublicRoute>
+            <PublicRoute path="/register" restricted redirectTo="/calculator">
+              <RegistrationPage />
+            </PublicRoute>
+            <PublicRoute path="/login" restricted redirectTo="/diary">
+              <LoginPage />
+            </PublicRoute>
+            <PrivateRoute path="/diary" restricted redirectTo="/login">
+              <DiaryPage />
+            </PrivateRoute>
+            <PrivateRoute path="/calculator" restricted redirectTo="/login">
+              <CalculatorPage />
+            </PrivateRoute>
+            isLoggedIn ? (<Redirect to="/calculator" />) : (
+            <Redirect to="/" />)
+          </Suspense>
+        </Switch>
       </div>
     )
   );
