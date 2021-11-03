@@ -16,16 +16,12 @@ const rateDailyUser = createAsyncThunk(
     "/daily/rateDaily",
     async (credentials, {rejectWithValue, getState}) => {
         const state = getState();
-        console.log(state)
-        console.log('LOG с ID')
-
         const id = state.user.id;
         const accessToken = state.auth.accessToken;
         token.set(accessToken);
 
         try {
             const {data} = await axios.post(`/daily-rate/${id}`, credentials);
-            console.log(credentials)
             return data;
         } catch (error) {
             return rejectWithValue(error.message);
@@ -37,13 +33,11 @@ const rateDailyUser = createAsyncThunk(
 const fetchDayInfo = createAsyncThunk(
     "daily/info",
     async (credentials, {rejectWithValue, getState}) => {
-        console.log(credentials)
         const state = getState();
         const accessToken = state.auth.accessToken;
         try {
             const {data} = await axios.post("/day/info", credentials);
             token.set(accessToken);
-            console.log(data)
             return data;
         } catch (error) {
             return rejectWithValue(error.message);
@@ -54,7 +48,6 @@ const fetchDayInfo = createAsyncThunk(
 const addProductByDay = createAsyncThunk(
     "daily/day",
     async (credentials, {rejectWithValue, getState}) => {
-        console.log(credentials)
         const state = getState();
         const accessToken = state.auth.accessToken;
         try {
@@ -68,17 +61,15 @@ const addProductByDay = createAsyncThunk(
 )
 
 const deleteProductByDay = createAsyncThunk(
-    "daily/day",
+    "daily/delete",
     async (credentials, {rejectWithValue, getState}) => {
-        console.log(credentials)
         const state = getState();
         const accessToken = state.auth.accessToken;
         try {
             token.set(accessToken);
             const {data} = await axios.delete("/day", {data: {...credentials}});
             // axios.delete(URL, {data: payload}, header);
-            console.log(data)
-            return data;
+            return {credentials, ...data};
         } catch (error) {
             return rejectWithValue(error.message);
         }

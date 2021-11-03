@@ -30,9 +30,8 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
         }
 
         axios.get(`/product?search=${value}`).then(({data}) => {
-            console.log(data);
             setProducts(data);
-            toggle();
+            // toggle();
         });
     };
 
@@ -45,7 +44,7 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
         e.preventDefault();
 
         const customeDate = moment(date).format("YYYY-MM-DD");
-        console.log(getProductIdByName());
+
 
         if (getProductIdByName()) {
             const requestData = {
@@ -89,15 +88,23 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
                 />
             </label>
 
-            {orMobile && !isOpen && (
-                <button
-                    type="submit"
-                    onClick={setProduct}
-                    className={style.diaryProductFormBtn}
-                >
-                    +
-                </button>
-            )}
+            <button
+                type="submit"
+                onClick={setProduct}
+                className={style.diaryProductFormBtn}
+            >
+                +
+            </button>
+
+            {/*{orMobile && !isOpen && (*/}
+            {/*    <button*/}
+            {/*        type="submit"*/}
+            {/*        onClick={setProduct}*/}
+            {/*        className={style.diaryProductFormBtn}*/}
+            {/*    >*/}
+            {/*        +*/}
+            {/*    </button>*/}
+            {/*)}*/}
         </form>
     );
 };
