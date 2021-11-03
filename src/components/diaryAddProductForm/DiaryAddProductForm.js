@@ -5,11 +5,12 @@ import { dailyOperations } from "../../redux/daily";
 import { useDispatch } from "react-redux";
 
 import axios from "axios";
+import { useMediaQuery } from "react-responsive";
 // import { useMediaQuery } from "react-responsive";
 // import Button from "../button/Button";
 axios.defaults.baseURL = "https://slimmom-backend.goit.global";
 
-const DiaryAddProductForm = ({ toggle, isOpen, orMobile, date, submit }) => {
+const DiaryAddProductForm = ({ toggle, isOpen, date, submit }) => {
   const [value, setValue] = useState("");
   const [products, setProducts] = useState([]);
   const [weight, setWeight] = useState("");
@@ -57,7 +58,7 @@ const DiaryAddProductForm = ({ toggle, isOpen, orMobile, date, submit }) => {
   const getProductIdByName = () => {
     return products.find((item) => item.title.ru === value);
   };
-
+  const orMobile = useMediaQuery({ query: "(max-width: 768px)" });
   return (
     <form className={style.diaryProductForm} onSubmit={setProduct}>
       {/*<form className={style.diaryProductForm}>*/}
@@ -95,15 +96,15 @@ const DiaryAddProductForm = ({ toggle, isOpen, orMobile, date, submit }) => {
         +
       </button>
 
-      {/*{orMobile && !isOpen && (*/}
-      {/*    <button*/}
-      {/*        type="submit"*/}
-      {/*        onClick={setProduct}*/}
-      {/*        className={style.diaryProductFormBtn}*/}
-      {/*    >*/}
-      {/*        +*/}
-      {/*    </button>*/}
-      {/*)}*/}
+      {orMobile && !isOpen && (
+        <button
+          type="submit"
+          onClick={setProduct}
+          className={style.diaryProductFormBtn}
+        >
+          +
+        </button>
+      )}
     </form>
   );
 };
