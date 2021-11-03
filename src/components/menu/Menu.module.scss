@@ -2,11 +2,12 @@
   display: flex;
   align-items: center;
   height: 40px;
+  // width: 100vh;
   margin-right: -15px;
   margin-left: -15px;
-  padding: 0 15px;
+  padding: 0 30px;
   background-color: #eff1f3;
-  @media screen and (min-width: 360px) {
+  @media screen and (min-width: 320px) {
     margin-right: 0;
     margin-left: 0;
   }

@@ -1,78 +1,81 @@
 .diaryProductForm {
-  margin-top: 80px;
+    margin-top: 80px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .block {
-  display: flex;
+    display: flex;
 }
 
 .productInput {
-  display: inline-block;
-  width: 290px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 30px;
-  margin-right: 40px;
-  border: none;
-  border-bottom: 1px solid #e0e0e0;
+    display: inline-block;
+    width: 290px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    margin-right: 40px;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
 }
-.productInput::placeholder {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: 0.04em;
 
-  color: #9b9faa;
+.productInput::placeholder {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+
+    color: #9b9faa;
 }
 
 .weightInput {
-  padding-bottom: 10px;
-  width: 80px;
-  border: none;
-  border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+    width: 80px;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .weightInput::placeholder {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: 0.04em;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
 
-  color: #9b9faa;
+    color: #9b9faa;
 }
+
 .diaryProductFormBtn {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 2px solid #fc842d;
-  color: #fff;
-  font-size: 32px;;
-  // box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
-  @media screen and (min-width: 768px) {
-    display: inline;
-    margin-left: 50px;
-  }
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #fc842d;
+    color: #fff;
+    font-size: 32px;;
+    @media screen and (min-width: 768px) {
+        display: inline;
+        margin-left: 50px;
+    }
 }
 
 .active {
-  composes: diaryProductFormBtn;
-  background-color: #fc842d;
-  cursor: pointer;
+    composes: diaryProductFormBtn;
+    background-color: #fc842d;
+    cursor: pointer;
 }
 
 .disabled {
-  composes: diaryProductFormBtn;
-  cursor: none;
-  pointer-events: none;
-  background-color: #ecc4aa;
+    composes: diaryProductFormBtn;
+    cursor: none;
+    pointer-events: none;
+    background-color: #ecc4aa;
 }
 
 
 .diaryProductFormBtn:hover {
-  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
 }
