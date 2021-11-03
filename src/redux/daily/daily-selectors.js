@@ -3,7 +3,12 @@ const getKcalConsumed = state => state.daily.kcalConsumed;
 const getPercentsOfDailyRate = state => state.daily.percentsOfDailyRate;
 const getDailyRate = state => state.daily.dailyRate;
 const getDailyRateByDay = (state, day) => state.user.days.find(item => item.date === day);
-// const getProductsByDay = (state, day) => state.user.
+
+const getRightSideBarRateByDay = (state, day) => state.user.days.length ?
+    state.user.days.find(item => item.date === day)
+    :
+    {daySummary: state.daily}
+;
 const getNotAllowedProducts = state => state.daily.notAllowedProducts;
 const getDate = state => state.daily.date;
 
@@ -15,6 +20,7 @@ const selectors = {
     getNotAllowedProducts,
     getDate,
     getDailyRateByDay,
+    getRightSideBarRateByDay,
 }
 
 export default selectors;

@@ -11,7 +11,7 @@ const RightSideBar = ({date}) => {
     // const dailyRate = useSelector(dailySelector.getDailyRate);
     // const kcalLeft = useSelector(dailySelector.getDailyKcalLeft);
     // const date = useSelector(dailySelector.getDate);
-    const day = useSelector(state => dailySelector.getDailyRateByDay(state, customeDate));
+    const day = useSelector(state => dailySelector.getRightSideBarRateByDay(state, customeDate));
     console.log(day)
     
     const getInfo = (key) => {
@@ -26,25 +26,25 @@ const RightSideBar = ({date}) => {
                     <li className={style.sideBarItem}>
                         <p className={style.sideBarItem_text}>
                             Осталось
-                            <span className={style.sideBarItem_span}>{getInfo('kcalLeft')}ккал</span>
+                            <span className={style.sideBarItem_span}>{getInfo('kcalLeft') || getInfo('dailyRate') || 0}ккал</span>
                         </p>
                     </li>
                     <li className={style.sideBarItem}>
                         <p className={style.sideBarItem_text}>
                             Употреблено
-                            <span className={style.sideBarItem_span}>{getInfo('kcalConsumed')} ккал</span>
+                            <span className={style.sideBarItem_span}>{getInfo('kcalConsumed') || 0 } ккал</span>
                         </p>
                     </li>
                     <li className={style.sideBarItem}>
                         <p className={style.sideBarItem_text}>
                             Дневная норма
-                            <span className={style.sideBarItem_span}>{getInfo('dailyRate')} ккал</span>
+                            <span className={style.sideBarItem_span}>{getInfo('dailyRate') || 0} ккал</span>
                         </p>
                     </li>
                     <li className={style.sideBarItem}>
                         <p className={style.sideBarItem_text}>
                             n% от нормы
-                            <span className={style.sideBarItem_span}>{getInfo('percentsOfDailyRate')} ккал</span>
+                            <span className={style.sideBarItem_span}>{getInfo('percentsOfDailyRate') || 0} ккал</span>
                         </p>
                     </li>
                 </ul>

@@ -46,10 +46,11 @@ const userSlice = createSlice({
     initialState: initialUserState,
     extraReducers: {
         [dailyOperations.deleteProductByDay.fulfilled](state, action) {
-            state.days = state.days.map(day => day._id === action.payload.credentials.dayId ?
+            state.days = state.days.map(day => (day.id || day._id) === action.payload.credentials.dayId ?
                 {
                     ...day,
-                    eatenProducts: day.eatenProducts.filter(item => item.id !== action.payload.credentials.eatenProductId)
+                    eatenProducts: day.eatenProducts.filter(item => item.id !== action.payload.credentials.eatenProductId),
+                    daySummary: action.payload.newDaySummary,
                 } : day,
             )
         },

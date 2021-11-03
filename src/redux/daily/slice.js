@@ -11,33 +11,30 @@ const dailyPersistConfig = {
 
 const initialDailyState = {
     eatenProduct: {},
-    day: {
-        date: null,
-        kcalLeft: null,
-        kcalConsumed: null,
-        percentsOfDailyRate: null,
-        dailyRate: null,
-        // notAllowedProducts: [],
-        eatenProducts: [],
-    }
+    kcalLeft: 0,
+    kcalConsumed: 0,
+    percentsOfDailyRate: 0,
+    dailyRate: 0,
+    // notAllowedProducts: [],
+    eatenProducts: [],
 };
 
 const dailySlice = createSlice({
     name: "daily",
     initialState: initialDailyState,
     extraReducers: {
-        [dailyOperations.addProductByDay.fulfilled](state, action) {
-            state.eatenProduct = action.payload.eatenProduct;
-            state.day.eatenProducts = action.payload.eatenProduct;
-        },
+        // [dailyOperations.addProductByDay.fulfilled](state, action) {
+        //     state.eatenProduct = action.payload.eatenProduct;
+        //     state.day.eatenProducts = action.payload.eatenProduct;
+        // },
 
         [dailyOperations.rateDailyUser.fulfilled](state, action) {
-            state.day.date = action.payload.summaries.date;
-            state.day.kcalLeft = action.payload.summaries.kcalLeft;
-            state.day.kcalConsumed = action.payload.summaries.kcalConsumed;
-            state.day.percentsOfDailyRate = action.payload.summaries.percentsOfDailyRate;
-            state.day.dailyRate = action.payload.dailyRate;
-            state.day.notAllowedProducts = action.payload.notAllowedProducts;
+            // state.day.date = action.payload.summaries.date;
+            state.kcalLeft = action.payload.summaries.kcalLeft;
+            state.kcalConsumed = action.payload.summaries.kcalConsumed;
+            state.percentsOfDailyRate = action.payload.summaries.percentsOfDailyRate;
+            state.dailyRate = action.payload.dailyRate;
+            state.notAllowedProducts = action.payload.notAllowedProducts;
             // state.days.
         },
         // [authOperations.rateDailyUser.fulfilled](state, action) {
