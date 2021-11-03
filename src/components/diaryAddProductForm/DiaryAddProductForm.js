@@ -58,7 +58,8 @@ const DiaryAddProductForm = ({ toggle, isOpen, date, submit }) => {
   const getProductIdByName = () => {
     return products.find((item) => item.title.ru === value);
   };
-  const orMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  // const orMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const orDesk = useMediaQuery({ query: "(min-width: 768px)" });
   return (
     <form className={style.diaryProductForm} onSubmit={setProduct}>
       {/*<form className={style.diaryProductForm}>*/}
@@ -87,16 +88,16 @@ const DiaryAddProductForm = ({ toggle, isOpen, date, submit }) => {
           placeholder="Граммы"
         />
       </label>
-
+      {/* 
       <button
         type="submit"
         onClick={setProduct}
         className={style.diaryProductFormBtn}
       >
         +
-      </button>
+      </button> */}
 
-      {orMobile && !isOpen && (
+      {orDesk && !isOpen && (
         <button
           type="submit"
           onClick={setProduct}
