@@ -3,6 +3,8 @@ import style from "./DiaryAddProductForm.module.scss";
 import moment from "moment";
 import {dailyOperations} from "../../redux/daily";
 import {useDispatch} from "react-redux";
+import {useMediaQuery} from "react-responsive";
+
 
 import axios from "axios";
 // import { useMediaQuery } from "react-responsive";
@@ -35,6 +37,7 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
         });
     };
 
+
     const getWeight = (e) => {
         const {value} = e.target;
         setWeight(value);
@@ -58,6 +61,8 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
     const getProductIdByName = () => {
         return products.find((item) => item.title.ru === value);
     };
+
+    const orDesk = useMediaQuery({query: "(min-width: 768px)"});
 
     return (
         <form className={style.diaryProductForm} onSubmit={setProduct}>
@@ -87,24 +92,15 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
                     placeholder="Граммы"
                 />
             </label>
-
-            <button
-                type="submit"
-                onClick={setProduct}
-                className={style.diaryProductFormBtn}
-            >
-                +
-            </button>
-
-            {/*{orMobile && !isOpen && (*/}
-            {/*    <button*/}
-            {/*        type="submit"*/}
-            {/*        onClick={setProduct}*/}
-            {/*        className={style.diaryProductFormBtn}*/}
-            {/*    >*/}
-            {/*        +*/}
-            {/*    </button>*/}
-            {/*)}*/}
+            {orDesk && !isOpen && (
+                <button
+                    type="submit"
+                    onClick={setProduct}
+                    className={style.diaryProductFormBtn}
+                >
+                    +
+                </button>
+            )}
         </form>
     );
 };
