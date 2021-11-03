@@ -55,7 +55,7 @@ export default function App() {
             <PublicRoute exact path="/">
               <MainPage />
             </PublicRoute>
-            <PublicRoute path="/register" restricted redirectTo="/calculator">
+            <PublicRoute path="/register" restricted redirectTo="/diary">
               <RegistrationPage />
             </PublicRoute>
             <PublicRoute path="/login" restricted redirectTo="/diary">
@@ -67,7 +67,7 @@ export default function App() {
             <PrivateRoute path="/calculator" restricted redirectTo="/login">
               <CalculatorPage />
             </PrivateRoute>
-            {isLoggedIn ? <Redirect to="/diary" /> : <Redirect to="/" />}
+            {isLoggedIn ? <Redirect to="/calculator" /> : <Redirect to="/" />}
           </Suspense>
         </Switch>
       </div>
