@@ -95,7 +95,7 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
                 disabled={!isWeight}
                 type="submit"
                 onClick={setProduct}
-                className={style.diaryProductFormBtn}
+                className={`${style.diaryProductFormBtn} ${isWeight ? style.active : style.disabled}`}
             >
                 +
             </button>

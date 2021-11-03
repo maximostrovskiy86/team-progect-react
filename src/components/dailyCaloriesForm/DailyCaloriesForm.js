@@ -46,9 +46,6 @@ const CalculatorСalorieForm = ({toggle, setValue}) => {
                                         getNumbers(values)
                                     )
                                     .then((response) => {
-                                        console.log(response.data);
-                                        console.log("LOG------------------------");
-
                                         setValue(response.data);
                                         toggle();
                                     });
