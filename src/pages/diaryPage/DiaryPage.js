@@ -57,7 +57,7 @@ export default function DiaryPage() {
             toggle={toggle}
           />
           <Button
-            onClick={() => console.log("Add product")}
+            onClick={() => console.log("Add product user")}
             text="Добавить"
           ></Button>
         </Modal>
