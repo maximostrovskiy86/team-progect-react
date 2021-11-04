@@ -37,7 +37,7 @@ const initialUserState = {
     },
 
     isLoggedIn: false,
-    date: new Date(),
+    date: '',
     error: null,
 };
 
@@ -169,15 +169,9 @@ const authSlice = createSlice({
             state.error = null;
         },
         [authOperations.register.fulfilled](state, action) {
-            // state.username = action.payload.user.username;
-            // state.email = action.payload.user.email;
-            // state.id = action.payload.user.id;
             state.accessToken = action.payload.accessToken;
             state.refreshToken = action.payload.refreshToken;
             state.sid = action.payload.sid;
-            // state.todaySummary = action.payload.todaySummary;
-            // state.userData = action.payload.user.userData;
-            // state.isLoggedIn = true;
         },
         [authOperations.register.rejected](state, action) {
             state.error = action.payload;
@@ -186,15 +180,9 @@ const authSlice = createSlice({
             state.error = null;
         },
         [authOperations.logIn.fulfilled](state, action) {
-            // state.username = action.payload.user.username;
-            // state.email = action.payload.user.email;
-            // state.id = action.payload.user.id;
             state.accessToken = action.payload.accessToken;
             state.refreshToken = action.payload.refreshToken;
             state.sid = action.payload.sid;
-            // state.todaySummary = action.payload.todaySummary;
-            // state.userData = action.payload.user.userData;
-            // state.isLoggedIn = true;
         },
         [authOperations.logIn.rejected](state, action) {
             state.error = action.payload;
@@ -203,26 +191,14 @@ const authSlice = createSlice({
             state.error = null;
         },
         [authOperations.logOut.fulfilled](state) {
-            // state.username = null;
-            // state.email = null;
-            // state.id = null;
             state.accessToken = null;
             state.refreshToken = null;
             state.sid = null;
-            // state.todaySummary = null;
-            // state.userData = null;
-            // state.isLoggedIn = false;
         },
         [authOperations.logOut.rejected](state, action) {
-            // state.username = null;
-            // state.email = null;
-            // state.id = null;
             state.accessToken = null;
             state.refreshToken = null;
             state.sid = null;
-            // state.todaySummary = null;
-            // state.userData = null;
-            // state.isLoggedIn = false;
             state.error = action.payload;
         },
         [authOperations.refreshAccessToken.pending](state) {
@@ -232,19 +208,12 @@ const authSlice = createSlice({
             state.accessToken = action.payload.accessToken;
             state.refreshToken = action.payload.refreshToken;
             state.sid = action.payload.sid;
-            // state.isLoggedIn = true;
             state.isRefreshingToken = false;
         },
         [authOperations.refreshAccessToken.rejected](state, action) {
-            // state.username = null;
-            // state.email = null;
-            // state.id = null;
             state.accessToken = null;
             state.refreshToken = null;
             state.sid = null;
-            // state.todaySummary = null;
-            // state.userData = null;
-            // state.isLoggedIn = false;
             state.error = action.payload;
         },
     },
@@ -258,11 +227,3 @@ export const persistedAuthReducer = persistReducer(
     authPersistConfig,
     authSlice.reducer
 );
-
-// const authRedusers = combineReducers({
-//   user: persistedUserReducer,
-//   auth: persistedAuthReducer,
-// });
-
-// export default authRedusers;
-// export authSlice.reducer;

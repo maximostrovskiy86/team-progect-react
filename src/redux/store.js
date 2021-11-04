@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
-  //   persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -9,10 +8,6 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-// import logger from "redux-logger";
-// import storage from "redux-persist/lib/storage";
-// import { contactsReducer } from "./phonebook";
-// import { authReducer } from "./authorization";
 import {
   persistedAuthReducer,
   persistedUserReducer,
@@ -25,7 +20,6 @@ const middleware = (getDefaultMiddleware) =>
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   });
-// .concat(logger);
 
 const store = configureStore({
   reducer: {

@@ -2,10 +2,8 @@
   border-bottom: 2px solid #e0e0e0;
   width: inherit;
   @media screen and (min-width: 768px) {
-    //border-bottom: 2px solid #e0e0e0;
   }
   @media screen and (min-width: 1200px) {
-    // padding-top: 134px;
     border-bottom: none;
   }
 }
@@ -14,16 +12,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // width: inherit;
   padding: 18px 0;
   @media screen and (min-width: 768px) {
     padding: 17px 0;
-    //margin-right: 69px;
-    //margin-left: 69px;
   }
   @media screen and (min-width: 1200px) {
-    //padding-top: 82px;
-    //padding-left: 90px;
     align-items: baseline;
     justify-content: flex-start;
   }

@@ -15,7 +15,6 @@ const initialDailyState = {
     kcalConsumed: 0,
     percentsOfDailyRate: 0,
     dailyRate: 0,
-    // notAllowedProducts: [],
     eatenProducts: [],
 };
 
@@ -23,25 +22,13 @@ const dailySlice = createSlice({
     name: "daily",
     initialState: initialDailyState,
     extraReducers: {
-        // [dailyOperations.addProductByDay.fulfilled](state, action) {
-        //     state.eatenProduct = action.payload.eatenProduct;
-        //     state.day.eatenProducts = action.payload.eatenProduct;
-        // },
-
         [dailyOperations.rateDailyUser.fulfilled](state, action) {
-            // state.day.date = action.payload.summaries.date;
             state.kcalLeft = action.payload.summaries.kcalLeft;
             state.kcalConsumed = action.payload.summaries.kcalConsumed;
             state.percentsOfDailyRate = action.payload.summaries.percentsOfDailyRate;
             state.dailyRate = action.payload.dailyRate;
             state.notAllowedProducts = action.payload.notAllowedProducts;
-            // state.days.
         },
-        // [authOperations.rateDailyUser.fulfilled](state, action) {
-        //   state.userData.dailyRate = action.payload.dailyRate;
-        //   state.todaySummary = action.payload.summaries;
-        //   state.userData.notAllowedProducts = action.payload.notAllowedProducts;
-
         [dailyOperations.fetchDayInfo.fulfilled](state, action) {
             state.date = action.payload.date;
             state.kcalLeft = action.payload.kcalLeft;
@@ -49,7 +36,6 @@ const dailySlice = createSlice({
             state.percentsOfDailyRate = action.payload.percentsOfDailyRate;
             state.dailyRate = action.payload.dailyRate;
         },
-
         [authOperations.logOut.fulfilled](state) {
             state.date = null;
             state.kcalLeft = null;

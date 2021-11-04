@@ -76,7 +76,6 @@ const deleteProductByDay = createAsyncThunk(
     }
 )
 
-
 const operations = {
     fetchDayInfo,
     rateDailyUser,
