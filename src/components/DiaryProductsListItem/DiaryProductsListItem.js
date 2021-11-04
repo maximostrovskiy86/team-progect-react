@@ -6,7 +6,7 @@ const DiaryProductsListItem = ({title, kcal, weight, onDelete, id}) => {
             <p className={style.itemElement}>
                 <span className={style.itemTitle}>{title}</span>
                 <span className={style.itemWeight}>{weight} г</span>
-                <span className={style.itemKcal}>{kcal} ккал</span>
+                <span className={style.itemKcal}>{kcal.toFixed()} ккал</span>
             </p>
             <button
                 className={style.deleteBtn}
