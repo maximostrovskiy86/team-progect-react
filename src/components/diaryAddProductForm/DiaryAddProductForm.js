@@ -1,24 +1,21 @@
 import React, { useState } from "react";
 import style from "./DiaryAddProductForm.module.scss";
 import moment from "moment";
-import {dailyOperations, dailySelector} from "../../redux/daily";
-import {authSelectors} from "../../redux/authorization";
-import {useDispatch, useSelector} from "react-redux";
+import { dailyOperations } from "../../redux/daily";
+import { authSelectors } from "../../redux/authorization";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useMediaQuery } from "react-responsive";
 // import { useMediaQuery } from "react-responsive";
 import Button from "../button/Button";
 axios.defaults.baseURL = "https://slimmom-backend.goit.global";
 
-
-const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
-    const [value, setValue] = useState("");
-    const [products, setProducts] = useState([]);
-    const [weight, setWeight] = useState("");
-    const dispatch = useDispatch();
-    const isWeight = useSelector(dailySelector.getWeight);
-    console.log(isWeight)
-
+const DiaryAddProductForm = ({ toggle, isOpen, orMobile, date, submit }) => {
+  const [value, setValue] = useState("");
+  const [products, setProducts] = useState([]);
+  const [weight, setWeight] = useState("");
+  const dispatch = useDispatch();
+  const isSend = useSelector(authSelectors.getNotAllowedProducts).length;
 
   const handleInput = (e) => {
     const { value } = e.target;
@@ -42,7 +39,6 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
     const { value } = e.target;
     setWeight(value);
   };
-
 
   const setProduct = async (e) => {
     e.preventDefault();
@@ -95,10 +91,12 @@ const DiaryAddProductForm = ({toggle, isOpen, orMobile, date, submit}) => {
       {!orDesk && isOpen && <Button onClick={setProduct} text="Добавить" />}
       {orDesk && !isOpen && (
         <button
-            // disabled={!isWeight}
-            // className={`${style.diaryProductFormBtn} ${isWeight ? style.active : style.disabled}`}
-            className={style.diaryProductFormBtn}
-            type="submit"
+          disabled={!isSend}
+          className={`${style.diaryProductFormBtn} ${
+            isSend ? style.active : style.disabled
+          }`}
+          // className={style.diaryProductFormBtn}
+          type="submit"
           onClick={setProduct}
         >
           +

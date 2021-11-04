@@ -12,9 +12,8 @@ const DiaryProductsList = ({ date }) => {
   const day = useSelector((state) =>
     dailySelector.getDailyRateByDay(state, customeDate)
   );
-  console.log("day:", day);
+
   const dispatch = useDispatch();
-  console.log(day ? day.eatenProducts : []);
 
   const deleteProductByDay = (id) => {
     const deleteProduct = {

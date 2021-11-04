@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/authorization/index";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import styles from "./ReagistrationForm.module.css";
 
 export default function RegistrationForm() {
@@ -57,7 +57,7 @@ export default function RegistrationForm() {
             name="email"
             value={email}
             onChange={handleChange}
-            pattern="/^(?!.*@.*@.*$)(?!.*@.*\-\-.*\..*$)(?!.*@.*\-\..*$)(?!.*@.*\-$)(.*@.+(\..{1,11})?)$/i"
+            pattern="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"
             title="Email должен содержать символ @ и иметь формат example@mail.com"
             required
             placeholder="Логин *"
@@ -81,11 +81,11 @@ export default function RegistrationForm() {
 
         <div className={styles.buttonBlock}>
           <button className={styles.button} type="submit">
-            Вход
-          </button>
-          <Link className={styles.buttonLink} to="/register">
             Регистрация
-          </Link>
+          </button>
+          {/* <Link className={styles.buttonLink} to="/register">
+            Вход
+          </Link> */}
         </div>
       </form>
     </div>
