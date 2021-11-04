@@ -1,4 +1,5 @@
 import React from "react";
+import {useHistory} from "react-router-dom";
 import {Formik, Field, Form} from "formik";
 import BasicFormSchema from "./DailyCaloriesFormValidator";
 import styles from "./DailyCaloriesForm.module.scss";
@@ -10,9 +11,10 @@ import {dailyOperations} from "../../redux/daily";
 
 const CalculatorСalorieForm = ({toggle, setValue}) => {
     const isLogged = useSelector(authSelectors.getIsLoggedIn);
-    const id = useSelector(authSelectors.getUserId);
+    // const id = useSelector(authSelectors.getUserId);
     const dispatch = useDispatch();
-    console.log(id);
+    const history = useHistory();
+    // console.log(id);
 
     const getNumbers = (data) => {
         const newData = {};
@@ -36,20 +38,40 @@ const CalculatorСalorieForm = ({toggle, setValue}) => {
                         bloodType: "",
                     }}
                     validationSchema={BasicFormSchema}
+                    // onSubmit={(values) => {
+                    //     {
+                    //         isLogged
+                    //             ? dispatch(dailyOperations.rateDailyUser(getNumbers(values)))
+                    //             : axios
+                    //                 .post(
+                    //                     "https://slimmom-backend.goit.global/daily-rate",
+                    //                     getNumbers(values)
+                    //                 )
+                    //                 .then((response) => {
+                    //                     setValue(response.data);
+                    //                     toggle();
+                    //                 });
+                    //     }
+                    // }}
                     onSubmit={(values) => {
-                        {
-                            isLogged
-                                ? dispatch(dailyOperations.rateDailyUser(getNumbers(values)))
-                                : axios
-                                    .post(
-                                        "https://slimmom-backend.goit.global/daily-rate",
-                                        getNumbers(values)
-                                    )
-                                    .then((response) => {
-                                        setValue(response.data);
-                                        toggle();
-                                    });
-                        }
+                        // eslint-disable-next-line no-lone-blocks
+
+                        if (isLogged) {
+                            dispatch(dailyOperations.rateDailyUser(getNumbers(values)));
+                            history.push("/diary");
+                        } else
+                            axios
+                                .post(
+                                    "https://slimmom-backend.goit.global/daily-rate",
+                                    getNumbers(values)
+                                )
+                                .then((response) => {
+                                    //   console.log(response.data);
+                                    //   console.log("LOG------------------------");
+
+                                    setValue(response.data);
+                                    toggle();
+                                });
                     }}
                     render={({errors, touched, values}) => (
                         <Form className={styles.formContainer}>
