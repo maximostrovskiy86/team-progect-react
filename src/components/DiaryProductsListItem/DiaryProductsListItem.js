@@ -7,14 +7,17 @@ const DiaryProductsListItem = ({title, kcal, weight, onDelete, id}) => {
                 <span className={style.itemTitle}>{title}</span>
                 <span className={style.itemWeight}>{weight} г</span>
                 <span className={style.itemKcal}>{kcal.toFixed()} ккал</span>
+                <span className={style.wrapperButton}>
+                <button
+                    className={style.deleteBtn}
+                    type="button"
+                    onClick={() => onDelete(id)}
+                >
+                    &times;
+                </button>
+                    </span>
             </p>
-            <button
-                className={style.deleteBtn}
-                type="button"
-                onClick={() => onDelete(id)}
-            >
-                &#10006;
-            </button>
+
         </li>
     );
 };
